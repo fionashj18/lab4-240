@@ -4,7 +4,8 @@ module masterPattern (
   input  logic [1:0]  shapeLocation,
   input  logic [2:0]  loadShape,
   input  logic        loadShapeNow, CLOCK_100, reset,
-  output logic [11:0] masterPattern
+  output logic [11:0] masterPattern,
+  output logic        finishLoading
 );
 
   logic clock;
@@ -55,5 +56,8 @@ module masterPattern (
                       .clock(clock), .Q(masterPattern[8:6]));
   Register #(3) reg3 (.D(loadShape), .en(enR3), .clear(reset), 
                       .clock(clock), .Q(masterPattern[11:9]));
+
+  // Checking all patterns are loaded
+  Comparator #(4) comp (.A(4'b1111), .B(loaded), .AeqB(finishLoading));
 
 endmodule : masterPattern
