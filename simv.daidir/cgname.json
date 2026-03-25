@@ -5,23 +5,11 @@
         "module",
         1
     ],
-    "MagComp": [
-        "MagComp",
-        "vaLRj",
-        "module",
-        2
-    ],
     "Adder": [
         "Adder",
         "xUt1z",
         "module",
         3
-    ],
-    "Subtracter": [
-        "Subtracter",
-        "pcAkE",
-        "module",
-        17
     ],
     "Multiplexer": [
         "Multiplexer",
@@ -34,12 +22,6 @@
         "wxUbx",
         "module",
         5
-    ],
-    "Counter": [
-        "Counter",
-        "Nsh6f",
-        "module",
-        7
     ],
     "ShiftRegisterSIPO": [
         "ShiftRegisterSIPO",
@@ -59,6 +41,12 @@
         "module",
         10
     ],
+    "Synchronizer": [
+        "Synchronizer",
+        "mLbx7",
+        "module",
+        16
+    ],
     "BusDriver": [
         "BusDriver",
         "Bt4nZ",
@@ -71,11 +59,23 @@
         "module",
         13
     ],
-    "masterPattern": [
-        "masterPattern",
-        "FRryt",
+    "grader": [
+        "grader",
+        "ITdSg",
         "module",
-        18
+        14
+    ],
+    "grader_tb": [
+        "grader_tb",
+        "pN4JF",
+        "module",
+        11
+    ],
+    "BigPictureDatapath_tb": [
+        "BigPictureDatapath_tb",
+        "LmuxE",
+        "module",
+        6
     ],
     "...MASTER...": [
         "SIM",
