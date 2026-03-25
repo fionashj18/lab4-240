@@ -43,7 +43,6 @@ module BigPictureDatapath
     
 
 endModule: BigPictureDatapath
-`default_nettype none
 module BigPictureFSM
     (input  logic clock, reset,
     input  logic finish_loading,
