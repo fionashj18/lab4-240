@@ -1,6 +1,6 @@
+`default_nettype none
 module myAbstractFSM 
-    (output logic [3:0] credit,
-     output logic drop,
+    (output logic drop,
      output logic q2, q1, q0,
      input logic pentagon, triangle, circle,
      input logic [1:0] coin,

@@ -1,3 +1,4 @@
+`default_nettype none
 module grader (
   input  logic [11:0] guess,
   input  logic [11:0] masterPattern,

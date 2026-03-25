@@ -1,3 +1,5 @@
+`default_nettype none
+
 module masterPattern (
   input  logic [1:0]  shapeLocation,
   input  logic [2:0]  loadShape,
