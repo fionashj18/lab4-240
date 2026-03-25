@@ -18,7 +18,7 @@ module BigPictureDatapath
 
     logic shape_loading, drop_game, roundOver, clr_game;
     logic maxNumGames, finish_loading, can_start, max_rounds,
-          znarly_win, coin_drop;
+          znarly_win;
 
     
 
