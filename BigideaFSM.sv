@@ -91,6 +91,7 @@ module BigPictureFSM
     input  logic GradeIt,
     input  logic LoadShapeNow,
     output logic roundOver,
+    output logic drop_game,
     output logic clr_game,
     output logic gameWon);
 
