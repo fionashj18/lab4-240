@@ -3,7 +3,8 @@ module grader (
     input  logic [11:0] masterPattern,
     input  logic        engrade, clrgrade, CLOCK_100,
     output logic [3:0]  Znarly,
-    output logic [3:0]  Zood
+    output logic [3:0]  Zood,
+    input logic hi
 );
 
     // ---- 4x4 Comparator Grid ----
