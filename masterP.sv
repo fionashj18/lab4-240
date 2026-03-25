@@ -1,6 +1,6 @@
 `default_nettype none
 
-module masterPattern (
+module masterPat (
   input  logic [1:0]  shapeLocation,
   input  logic [2:0]  loadShape,
   input  logic        loadShapeNow, CLOCK_100, reset,
@@ -12,15 +12,10 @@ module masterPattern (
   assign clock = CLOCK_100;
   logic [3:0] loaded;
   logic [3:0] location;
-  logic loadShapeNow_sync;
-
-  Synchronizer #(1) sync (.async(loadShapeNow), 
-                          .clock(clock), 
-                          .sync(loadShapeNow_sync));
 
   // Finding which location shape goes to using Decoder
   Decoder #(4) dec (.I(shapeLocation), 
-                    .en(loadShapeNow_sync), 
+                    .en(loadShapeNow), 
                     .D(location));
 
   // Inputs for DFF (OR with feedback keeps loaded bits set once high)
@@ -60,4 +55,4 @@ module masterPattern (
   // Checking all patterns are loaded
   Comparator #(4) comp (.A(4'b1111), .B(loaded), .AeqB(finishLoading));
 
-endmodule : masterPattern
+endmodule : masterPat

@@ -9,7 +9,7 @@ module ChipInterface (
   input  logic        CLOCK_100
 );
 
-  // BTN[0] is async reset
+  // BTN[0]: async reset
   logic reset;
   assign reset = BTN[0];
 
@@ -29,10 +29,9 @@ module ChipInterface (
                                .sync(CoinValue_sync[1]));
 
   // Big-picture datapath + FSM
-  logic shape_loading, drop_game, roundOver, clr_game;
   logic [3:0] Znarly, Zood, RoundNumber, NumGames;
   logic [11:0] masterPat;
-  logic finishLoading, can_start, max_rounds, Znarly_Win;
+  logic GameWon;
 
   BigPictureDatapath bigDP (
     .clock(CLOCK_100),
@@ -43,18 +42,13 @@ module ChipInterface (
     .CoinValue(CoinValue_sync),
     .CoinInserted(CoinInserted_sync),
     .StartGame(StartGame_sync),
-    .shape_loading,
-    .drop_game,
-    .roundOver,
-    .clr_game,
-    .finish_loading(finishLoading),
-    .can_start,
-    .max_rounds,
-    .znarly_win(Znarly_Win),
+    .GradeIt(GradeIt_sync),
+    .LoadShapeNow(GradeIt_sync),
     .Znarly,
     .Zood,
     .RoundNumber,
     .NumGames,
+    .GameWon,
     .masterPattern(masterPat)
   );
 
@@ -73,6 +67,6 @@ module ChipInterface (
     .D2_SEG, .D1_SEG
   );
 
-  assign LD = 16'b0;
+  assign LD = {15'b0, GameWon};
 
 endmodule : ChipInterface

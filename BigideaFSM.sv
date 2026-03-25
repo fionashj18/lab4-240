@@ -1,48 +1,86 @@
 `default_nettype none
 module BigPictureDatapath
-    (input  logic clock, reset,
-    input  logic [11:0] Guess,
-    input  logic [2:0]  LoadShape,
-    input  logic [1:0]  ShapeLocation,
-    input  logic [1:0]  CoinValue,
-    input  logic CoinInserted,
-    input  logic shape_loading,
-    input  logic drop_game,
-    input  logic roundOver,
-    input logic StartGame,
-    input  logic clr_game,
-    output logic finish_loading,
-    output logic can_start,
-    output logic max_rounds,
-    output logic znarly_win,
-    output logic [3:0] Znarly,
-    output logic [3:0] Zood,
-    output logic [3:0] RoundNumber,
-    output logic [3:0] NumGames,
-    output logic [11:0] masterPattern);
+    (input  logic        clock, reset,
+     input  logic [11:0] Guess,
+     input  logic [2:0]  LoadShape,
+     input  logic [1:0]  ShapeLocation,
+     input  logic [1:0]  CoinValue,
+     input  logic        CoinInserted,
+     input  logic        StartGame,
+     input  logic        GradeIt,
+     input  logic        LoadShapeNow,
+     output logic        finish_loading,
+     output logic        can_start,
+     output logic        max_rounds,
+     output logic        znarly_win,
+     output logic        gameWon,
+     output logic [3:0]  Znarly,
+     output logic [3:0]  Zood,
+     output logic [3:0]  RoundNumber,
+     output logic [3:0]  NumGames,
+     output logic [11:0] masterPattern);
 
-    BigPictureFSM fsm2(.*)
+    logic shape_loading, drop_game, roundOver, clr_game;
+    logic maxNumGames;
 
-    logic canStart_AeqB, canStart_AgtB; 
+    BigPictureFSM fsm2 (.*);
 
-    Counter #(4) numGamesCtr (.D(4'd0), .Q(NumGames), 
-                              .en(~maxNumGames & (startgame | drop)),
-                              .load(1'b0), .clear(reset), .up(drop_game), .clock);
-    Synchronizer syn (.sync(StartGame), .async(StartGame), .clock);
+    // masterPat
+    masterPat mp (
+        .shapeLocation(ShapeLocation),
+        .loadShape(LoadShape),
+        .loadShapeNow(shape_loading),
+        .CLOCK_100(clock),
+        .reset,
+        .masterPattern,
+        .finishLoading(finish_loading)
+    );
 
+    logic circle, triangle, pentagon;
+    assign circle   = CoinInserted & (CoinValue == 2'b01);
+    assign triangle = CoinInserted & (CoinValue == 2'b10);
+    assign pentagon = CoinInserted & (CoinValue == 2'b11);
+
+    logic coin_drop;
+    coinAcceptorFSM ca (
+        .pentagon, .triangle, .circle,
+        .coin(CoinValue),
+        .clock, .reset,
+        .drop(coin_drop),
+        .q2(), .q1(), .q0()
+    );
+
+    // NumGames counter: increment on coin_drop (capped at 7), decrement on drop_game
+    MagComp #(4) maxGamesComp (.A(NumGames), .B(4'd7), .AeqB(maxNumGames), .AltB(), .AgtB());
+
+    Counter #(4) numGamesCtr (.D(4'd0), .Q(NumGames),
+                              .en((coin_drop & ~maxNumGames) | drop_game),
+                              .load(1'b0), .clear(reset), .up(~drop_game), .clock);
+
+    logic canStart_AeqB, canStart_AgtB;
     MagComp #(4) canStartComp (.A(NumGames), .B(4'd1), .AeqB(canStart_AeqB), .AltB(),
                                .AgtB(canStart_AgtB));
     assign can_start = canStart_AeqB | canStart_AgtB;
 
-    MagComp #(4) maxGamesComp (.A(NumGames), .B(4'd9), .AeqB(maxNumGames), .AltB(), .AgtB());
-
+    // Round counter
     Counter #(4) roundCtr (.D(4'd0), .Q(RoundNumber), .en(roundOver), .load(1'b0),
                            .clear(reset | clr_game), .up(1'b1), .clock);
- 
-    MagComp #(4) roundComp (.A(RoundNumber), .B(4'd8), .AeqB(max_rounds), .AltB(), .AgtB());
-    
 
-endModule: BigPictureDatapath
+    MagComp #(4) roundComp (.A(RoundNumber), .B(4'd8), .AeqB(max_rounds), .AltB(), .AgtB());
+
+    // grader
+    grader g (
+        .guess(Guess),
+        .masterPattern,
+        .GradeIt,
+        .CLOCK_100(clock),
+        .reset,
+        .Znarly,
+        .Zood,
+        .Znarly_Win(znarly_win)
+    );
+
+endmodule : BigPictureDatapath
 
 module BigPictureFSM
     (input  logic clock, reset,
