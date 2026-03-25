@@ -18,8 +18,8 @@ module grader (
   logic P3G1, P3G2, P3G3, P3G4;
   logic P4G1, P4G2, P4G3, P4G4;
 
-  Comparator #(3) cP1G2(.A(masterPattern[2:0]), .B(guess[5:3]), .AeqB(P1G2));
-  Comparator #(3) cP1G3(.A(masterPattern[2:0]), .B(guess[8:6]), .AeqB(P1G3));
+  Comparator #(3) cP1G2(.A(masterPattern[2:0]), .B(guess[5:3]),  .AeqB(P1G2));
+  Comparator #(3) cP1G3(.A(masterPattern[2:0]), .B(guess[8:6]),  .AeqB(P1G3));
   Comparator #(3) cP1G4(.A(masterPattern[2:0]), .B(guess[11:9]), .AeqB(P1G4));
 
   Comparator #(3) cP2G1(.A(masterPattern[5:3]), .B(guess[2:0]),  .AeqB(P2G1));
@@ -154,7 +154,7 @@ module grader_tb;
     if (Znarly != 4) $display("INCORRECT test1: Znarly expected 4, got %0d", Znarly);
     if (Zood   != 0) $display("INCORRECT test1: Zood expected 0, got %0d", Zood);
     GradeIt <= 0;
-    @(posedge CLOCK_100);  // FSM: GRADE -> IDLE(outputs clear)
+    @(posedge CLOCK_100);  // FSM: GRADE -> IDLE (outputs clear)
 
     // Test 2: Znarly=0, Zood=0
     // master = T T T T (001_001_001_001), guess = C C C C (010_010_010_010)
