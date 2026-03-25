@@ -81,4 +81,4 @@ module coinAcceptorFSM
         end
     end
 
-endmodule : myAbstractFSM
+endmodule : coinAcceptorFSM
