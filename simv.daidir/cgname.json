@@ -5,6 +5,12 @@
         "module",
         1
     ],
+    "Comparator": [
+        "Comparator",
+        "ZPSNi",
+        "module",
+        16
+    ],
     "MagComp": [
         "MagComp",
         "vaLRj",
@@ -17,6 +23,12 @@
         "module",
         3
     ],
+    "Subtracter": [
+        "Subtracter",
+        "pcAkE",
+        "module",
+        17
+    ],
     "Multiplexer": [
         "Multiplexer",
         "UxyT3",
@@ -28,12 +40,6 @@
         "wxUbx",
         "module",
         5
-    ],
-    "Decoder": [
-        "Decoder",
-        "t8TcA",
-        "module",
-        6
     ],
     "Counter": [
         "Counter",
@@ -59,12 +65,6 @@
         "module",
         10
     ],
-    "Synchronizer": [
-        "Synchronizer",
-        "mLbx7",
-        "module",
-        11
-    ],
     "BusDriver": [
         "BusDriver",
         "Bt4nZ",
@@ -77,11 +77,11 @@
         "module",
         13
     ],
-    "grader_tb": [
-        "grader_tb",
-        "pN4JF",
+    "masterPattern": [
+        "masterPattern",
+        "FRryt",
         "module",
-        14
+        18
     ],
     "...MASTER...": [
         "SIM",
