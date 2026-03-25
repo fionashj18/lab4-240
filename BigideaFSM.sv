@@ -9,10 +9,6 @@ module BigPictureDatapath
      input  logic        StartGame,
      input  logic        GradeIt,
      input  logic        LoadShapeNow,
-     output logic        finish_loading,
-     output logic        can_start,
-     output logic        max_rounds,
-     output logic        znarly_win,
      output logic        gameWon,
      output logic [3:0]  Znarly,
      output logic [3:0]  Zood,
@@ -21,7 +17,10 @@ module BigPictureDatapath
      output logic [11:0] masterPattern);
 
     logic shape_loading, drop_game, roundOver, clr_game;
-    logic maxNumGames;
+    logic maxNumGames, finish_loading, can_start, max_rounds,
+          znarly_win;
+
+    
 
     BigPictureFSM fsm2 (.*);
 
@@ -91,8 +90,6 @@ module BigPictureFSM
     input  logic StartGame,
     input  logic GradeIt,
     input  logic LoadShapeNow,
-    output logic shape_loading,
-    output logic drop_game,
     output logic roundOver,
     output logic clr_game,
     output logic gameWon);
@@ -107,7 +104,6 @@ module BigPictureFSM
     assign loadShapeNowSeen = LoadShapeNow & ~LoadShapeNow_bf;
 
     always_comb begin
-        shape_loading = 1'b0;
         drop_game = 1'b0;
         clr_game = 1'b0;
         roundOver = 1'b0;
@@ -116,7 +112,6 @@ module BigPictureFSM
         case (currState)
             IDLE: begin
                 if (loadShapeNowSeen) begin
-                    shape_loading = 1'b1;
                     nextState     = IDLE;
                 end
                 else if (startSeen & can_start & finish_loading & ~max_rounds) begin
