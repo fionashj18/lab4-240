@@ -77,6 +77,9 @@ module grader (
   Register #(4) zoodReg  (.D(z_actual),   .en(enGrade), .clear(clrGrade),
                           .clock(CLOCK_100), .Q(Zood));
   
+  // Znarly Win
+  Comparator #(4) znWin(.A(4'd4), .B(Znarly), .AeqB(Znarly_Win));
+  
   gradeItFSM control (.*);
 
 endmodule : grader
@@ -116,6 +119,7 @@ module grader_tb;
   logic [11:0] guess, masterPattern;
   logic        GradeIt, CLOCK_100, reset;
   logic [3:0]  Znarly, Zood;
+  logic        Znarly_Win;
 
   grader dut (.*);
 
