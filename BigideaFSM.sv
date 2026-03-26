@@ -9,10 +9,6 @@ module BigPictureDatapath
      input  logic        StartGame,
      input  logic        GradeIt,
      input  logic        LoadShapeNow,
-     output logic        finish_loading,
-     output logic        can_start,
-     output logic        max_rounds,
-     output logic        znarly_win,
      output logic        gameWon,
      output logic [3:0]  Znarly,
      output logic [3:0]  Zood,
@@ -21,12 +17,15 @@ module BigPictureDatapath
      output logic [11:0] masterPattern);
 
     logic shape_loading, drop_game, roundOver, clr_game;
-    logic maxNumGames;
+    logic maxNumGames, finish_loading, can_start, max_rounds,
+          znarly_win;
+
+   
 
     BigPictureFSM fsm2 (.*);
 
     // masterPat
-    masterPat mp (
+    masterPattern mp (
         .shapeLocation(ShapeLocation),
         .loadShape(LoadShape),
         .loadShapeNow(shape_loading),
@@ -44,24 +43,22 @@ module BigPictureDatapath
     logic coin_drop;
     coinAcceptorFSM ca (
         .pentagon, .triangle, .circle,
-        .coin(CoinValue),
         .clock, .reset,
         .drop(coin_drop),
-        .q2(), .q1(), .q0(),
         .credit()
     );
 
     // NumGames counter
-    MagComp #(4) maxGamesComp (.A(NumGames), .B(4'd7), .AeqB(maxNumGames), 
+    MagComp #(4) maxGamesComp (.A(NumGames), .B(4'd7), .AeqB(maxNumGames),
                                .AltB(), .AgtB());
 
     Counter #(4) numGamesCtr (.D(4'd0), .Q(NumGames),
                               .en((coin_drop & ~maxNumGames) | drop_game),
-                              .load(1'b0), .clear(reset), .up(~drop_game), 
+                              .load(1'b0), .clear(reset), .up(~drop_game),
                               .clock);
 
     logic canStart_AeqB, canStart_AgtB;
-    MagComp #(4) canStartComp (.A(NumGames), .B(4'd1), .AeqB(canStart_AeqB), 
+    MagComp #(4) canStartComp (.A(NumGames), .B(4'd1), .AeqB(canStart_AeqB),
                                .AltB(), .AgtB(canStart_AgtB));
     assign can_start = canStart_AeqB | canStart_AgtB;
 
@@ -69,7 +66,7 @@ module BigPictureDatapath
     Counter #(4) roundCtr (.D(4'd0), .Q(RoundNumber), .en(roundOver), .load(1'b0),
                            .clear(reset | clr_game), .up(1'b1), .clock);
 
-    MagComp #(4) roundComp (.A(RoundNumber), .B(4'd8), .AeqB(max_rounds), 
+    MagComp #(4) roundComp (.A(RoundNumber), .B(4'd8), .AeqB(max_rounds),
                             .AltB(), .AgtB());
 
     // grader
@@ -95,9 +92,9 @@ module BigPictureFSM
     input  logic StartGame,
     input  logic GradeIt,
     input  logic LoadShapeNow,
+    output logic roundOver,
     output logic shape_loading,
     output logic drop_game,
-    output logic roundOver,
     output logic clr_game,
     output logic gameWon);
 
@@ -165,7 +162,7 @@ module BigPictureFSM
             default: nextState = IDLE;
         endcase
     end
-    
+   
     always_ff @(posedge clock) begin
         if (reset) begin
             StartGame_bf    <= 1'b0;
@@ -240,25 +237,25 @@ module BigPictureDatapath_tb;
 
     // Test 2: Insert 4 circles -> NumGames should become 1
     //   CoinValue=01 (circle), pulse CoinInserted 4 times
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
-    @(posedge clock); 
-    CoinInserted = 0; 
+    CoinValue <= 2'b01;
+    CoinInserted <= 1;
     @(posedge clock);
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
-    @(posedge clock); 
-    CoinInserted = 0;
+    CoinInserted <= 0;
     @(posedge clock);
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
-    @(posedge clock); 
-    CoinInserted = 0; 
+    CoinValue <= 2'b01;
+    CoinInserted <= 1;
     @(posedge clock);
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
-    @(posedge clock); 
-    CoinInserted = 0; 
+    CoinInserted <= 0;
+    @(posedge clock);
+    CoinValue <= 2'b01;
+    CoinInserted <= 1;
+    @(posedge clock);
+    CoinInserted <= 0;
+    @(posedge clock);
+    CoinValue <= 2'b01;
+    CoinInserted <= 1;
+    @(posedge clock);
+    CoinInserted <= 0;
     @(posedge clock);
     #1;
     if (NumGames != 4'd1)
@@ -266,8 +263,10 @@ module BigPictureDatapath_tb;
     else
       $display("CORRECT test2");
 
+    // -------------------------------------------------------
     // Test 3: Start game, guess O D T C (010_001_100_011)
     //   vs master T C O D -> Znarly=0, Zood=4
+    // -------------------------------------------------------
     StartGame = 1; @(posedge clock); StartGame = 0; @(posedge clock);
     Guess = 12'b010_001_100_011;
     GradeIt = 1; @(posedge clock); @(posedge clock);
@@ -279,8 +278,10 @@ module BigPictureDatapath_tb;
     else
       $display("CORRECT test3");
 
+    // -------------------------------------------------------
     // Test 4: Guess T C O D (100_011_010_001) = exact match
     //   Expected: Znarly=4, Zood=0
+    // -------------------------------------------------------
     Guess = 12'b100_011_010_001;
     GradeIt = 1; @(posedge clock); @(posedge clock);
     GradeIt = 0; @(posedge clock);
