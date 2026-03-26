@@ -1,6 +1,6 @@
 # Begin_DVE_Session_Save_Info
 # DVE restart session
-# Saved on Wed Mar 25 20:09:46 2026
+# Saved on Wed Mar 25 21:26:31 2026
 # Designs open: 1
 #   Sim: /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/simv
 # Toplevel windows open: 3
@@ -9,10 +9,12 @@
 # 	TopLevel.3
 #   Source.1: BigPictureDatapath_tb
 #   Wave.1: 20 signals
-#   Wave.2: 51 signals
-#   Group count = 3
+#   Wave.2: 73 signals
+#   Group count = 4
 #   Group BigPictureDatapath_tb signal count = 20
-#   Group ca signal count = 21
+#   Group Group1 signal count = 33
+#   Group Group2 signal count = 21
+#   Group Group3 signal count = 19
 # End_DVE_Session_Save_Info
 
 # DVE version: T-2022.06_Full64
@@ -62,7 +64,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 
 # MDI window settings
 set Wave.1 Wave.1
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 345} {child_wave_right 842} {child_wave_colname 177} {child_wave_colvalue 164} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 409} {child_wave_right 997} {child_wave_colname 202} {child_wave_colvalue 203} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -76,7 +78,7 @@ gui_sync_global -id ${TopLevel.3} -option true
 
 # MDI window settings
 set Wave.2 Wave.2
-gui_update_layout -id ${Wave.2} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 556} {child_wave_right 1358} {child_wave_colname 301} {child_wave_colvalue 251} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.2} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 409} {child_wave_right 997} {child_wave_colname 202} {child_wave_colvalue 203} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -104,30 +106,36 @@ gui_set_time_units 1s
 
 # Global: Signal Groups
 gui_load_child_values {BigPictureDatapath_tb.dut}
-gui_load_child_values {BigPictureDatapath_tb.dut.ca}
+gui_load_child_values {BigPictureDatapath_tb.dut.mp}
+gui_load_child_values {BigPictureDatapath_tb.dut.fsm2}
 gui_load_child_values {BigPictureDatapath_tb}
 
 
-set _session_group_18 BigPictureDatapath_tb
-gui_sg_create "$_session_group_18"
-set BigPictureDatapath_tb "$_session_group_18"
+set _session_group_10 BigPictureDatapath_tb
+gui_sg_create "$_session_group_10"
+set BigPictureDatapath_tb "$_session_group_10"
 
-gui_sg_addsignal -group "$_session_group_18" { BigPictureDatapath_tb.can_start BigPictureDatapath_tb.znarly_win BigPictureDatapath_tb.CoinValue BigPictureDatapath_tb.CoinInserted BigPictureDatapath_tb.clock BigPictureDatapath_tb.reset BigPictureDatapath_tb.gameWon BigPictureDatapath_tb.finish_loading BigPictureDatapath_tb.NumGames BigPictureDatapath_tb.Zood BigPictureDatapath_tb.StartGame BigPictureDatapath_tb.GradeIt BigPictureDatapath_tb.Znarly BigPictureDatapath_tb.ShapeLocation BigPictureDatapath_tb.max_rounds BigPictureDatapath_tb.LoadShapeNow BigPictureDatapath_tb.masterPat_out BigPictureDatapath_tb.RoundNumber BigPictureDatapath_tb.Guess BigPictureDatapath_tb.LoadShape }
+gui_sg_addsignal -group "$_session_group_10" { BigPictureDatapath_tb.can_start BigPictureDatapath_tb.znarly_win BigPictureDatapath_tb.CoinValue BigPictureDatapath_tb.CoinInserted BigPictureDatapath_tb.clock BigPictureDatapath_tb.reset BigPictureDatapath_tb.gameWon BigPictureDatapath_tb.finish_loading BigPictureDatapath_tb.NumGames BigPictureDatapath_tb.Zood BigPictureDatapath_tb.StartGame BigPictureDatapath_tb.masterPattern BigPictureDatapath_tb.GradeIt BigPictureDatapath_tb.Znarly BigPictureDatapath_tb.ShapeLocation BigPictureDatapath_tb.max_rounds BigPictureDatapath_tb.LoadShapeNow BigPictureDatapath_tb.RoundNumber BigPictureDatapath_tb.Guess BigPictureDatapath_tb.LoadShape }
 
-set _session_group_19 ca
-gui_sg_create "$_session_group_19"
-set ca "$_session_group_19"
+set _session_group_11 Group1
+gui_sg_create "$_session_group_11"
+set Group1 "$_session_group_11"
 
-gui_sg_addsignal -group "$_session_group_19" { BigPictureDatapath_tb.dut.ca.prevCircle BigPictureDatapath_tb.dut.ca.circle BigPictureDatapath_tb.dut.ca.check_circle BigPictureDatapath_tb.dut.clock BigPictureDatapath_tb.dut.ca.clock BigPictureDatapath_tb.dut.ca.nextState BigPictureDatapath_tb.dut.ca.reset BigPictureDatapath_tb.dut.ca.check_pentagon BigPictureDatapath_tb.dut.ca.q0 BigPictureDatapath_tb.dut.ca.check_triangle BigPictureDatapath_tb.dut.ca.q1 BigPictureDatapath_tb.dut.ca.q2 BigPictureDatapath_tb.dut.ca.prevPentagon BigPictureDatapath_tb.dut.ca.prevTriangle BigPictureDatapath_tb.dut.ca.currState BigPictureDatapath_tb.dut.ca.pentagon BigPictureDatapath_tb.dut.ca.triangle BigPictureDatapath_tb.dut.ca.credit BigPictureDatapath_tb.dut.ca.coin BigPictureDatapath_tb.dut.ca.drop }
+gui_sg_addsignal -group "$_session_group_11" { BigPictureDatapath_tb.dut.clock BigPictureDatapath_tb.dut.reset BigPictureDatapath_tb.dut.Guess BigPictureDatapath_tb.dut.LoadShape BigPictureDatapath_tb.dut.ShapeLocation BigPictureDatapath_tb.dut.CoinValue BigPictureDatapath_tb.dut.CoinInserted BigPictureDatapath_tb.dut.StartGame BigPictureDatapath_tb.dut.GradeIt BigPictureDatapath_tb.dut.LoadShapeNow BigPictureDatapath_tb.dut.gameWon BigPictureDatapath_tb.dut.Znarly BigPictureDatapath_tb.dut.Zood BigPictureDatapath_tb.dut.RoundNumber BigPictureDatapath_tb.dut.NumGames BigPictureDatapath_tb.dut.masterPattern BigPictureDatapath_tb.dut.shape_loading BigPictureDatapath_tb.dut.drop_game BigPictureDatapath_tb.dut.roundOver BigPictureDatapath_tb.dut.clr_game BigPictureDatapath_tb.dut.maxNumGames BigPictureDatapath_tb.dut.finish_loading BigPictureDatapath_tb.dut.can_start BigPictureDatapath_tb.dut.max_rounds BigPictureDatapath_tb.dut.znarly_win BigPictureDatapath_tb.dut.enGrade BigPictureDatapath_tb.dut.clrGrade BigPictureDatapath_tb.dut.circle BigPictureDatapath_tb.dut.triangle BigPictureDatapath_tb.dut.pentagon BigPictureDatapath_tb.dut.coin_drop BigPictureDatapath_tb.dut.canStart_AeqB BigPictureDatapath_tb.dut.canStart_AgtB }
 
-set _session_group_20 $_session_group_19|
-append _session_group_20 dut
-gui_sg_create "$_session_group_20"
-set ca|dut "$_session_group_20"
+set _session_group_12 Group2
+gui_sg_create "$_session_group_12"
+set Group2 "$_session_group_12"
 
-gui_sg_addsignal -group "$_session_group_20" { BigPictureDatapath_tb.dut.can_start BigPictureDatapath_tb.dut.znarly_win BigPictureDatapath_tb.dut.CoinValue BigPictureDatapath_tb.dut.circle BigPictureDatapath_tb.dut.CoinInserted BigPictureDatapath_tb.dut.roundOver BigPictureDatapath_tb.dut.drop_game BigPictureDatapath_tb.dut.coin_drop BigPictureDatapath_tb.dut.clock BigPictureDatapath_tb.dut.clr_game BigPictureDatapath_tb.dut.reset BigPictureDatapath_tb.dut.gameWon BigPictureDatapath_tb.dut.finish_loading BigPictureDatapath_tb.dut.NumGames BigPictureDatapath_tb.dut.Zood BigPictureDatapath_tb.dut.StartGame BigPictureDatapath_tb.dut.masterPattern BigPictureDatapath_tb.dut.GradeIt BigPictureDatapath_tb.dut.Znarly BigPictureDatapath_tb.dut.ShapeLocation BigPictureDatapath_tb.dut.max_rounds BigPictureDatapath_tb.dut.LoadShapeNow BigPictureDatapath_tb.dut.pentagon BigPictureDatapath_tb.dut.shape_loading BigPictureDatapath_tb.dut.triangle BigPictureDatapath_tb.dut.RoundNumber BigPictureDatapath_tb.dut.Guess BigPictureDatapath_tb.dut.canStart_AeqB BigPictureDatapath_tb.dut.LoadShape BigPictureDatapath_tb.dut.canStart_AgtB BigPictureDatapath_tb.dut.maxNumGames }
+gui_sg_addsignal -group "$_session_group_12" { BigPictureDatapath_tb.dut.fsm2.clock BigPictureDatapath_tb.dut.fsm2.reset BigPictureDatapath_tb.dut.fsm2.finish_loading BigPictureDatapath_tb.dut.fsm2.can_start BigPictureDatapath_tb.dut.fsm2.max_rounds BigPictureDatapath_tb.dut.fsm2.znarly_win BigPictureDatapath_tb.dut.fsm2.StartGame BigPictureDatapath_tb.dut.fsm2.GradeIt BigPictureDatapath_tb.dut.fsm2.LoadShapeNow BigPictureDatapath_tb.dut.fsm2.shape_loading BigPictureDatapath_tb.dut.fsm2.drop_game BigPictureDatapath_tb.dut.fsm2.clr_game BigPictureDatapath_tb.dut.fsm2.gameWon BigPictureDatapath_tb.dut.fsm2.currState BigPictureDatapath_tb.dut.fsm2.nextState BigPictureDatapath_tb.dut.fsm2.StartGame_bf BigPictureDatapath_tb.dut.fsm2.GradeIt_bf BigPictureDatapath_tb.dut.fsm2.LoadShapeNow_bf BigPictureDatapath_tb.dut.fsm2.startSeen BigPictureDatapath_tb.dut.fsm2.gradeItSeen BigPictureDatapath_tb.dut.fsm2.loadShapeNowSeen }
 
-gui_sg_move "$_session_group_20" -after "$_session_group_19" -pos 4 
+set _session_group_13 Group3
+gui_sg_create "$_session_group_13"
+set Group3 "$_session_group_13"
+
+gui_sg_addsignal -group "$_session_group_13" { BigPictureDatapath_tb.dut.mp.shapeLocation BigPictureDatapath_tb.dut.mp.loadShape BigPictureDatapath_tb.dut.mp.loadShapeNow BigPictureDatapath_tb.dut.mp.CLOCK_100 BigPictureDatapath_tb.dut.mp.reset BigPictureDatapath_tb.dut.mp.masterPattern BigPictureDatapath_tb.dut.mp.finishLoading BigPictureDatapath_tb.dut.mp.clock BigPictureDatapath_tb.dut.mp.loaded BigPictureDatapath_tb.dut.mp.location BigPictureDatapath_tb.dut.mp.loadShapeNow_sync BigPictureDatapath_tb.dut.mp.d0 BigPictureDatapath_tb.dut.mp.d1 BigPictureDatapath_tb.dut.mp.d2 BigPictureDatapath_tb.dut.mp.d3 BigPictureDatapath_tb.dut.mp.enR0 BigPictureDatapath_tb.dut.mp.enR1 BigPictureDatapath_tb.dut.mp.enR2 BigPictureDatapath_tb.dut.mp.enR3 }
+gui_set_radix -radix {binary} -signals {Sim:BigPictureDatapath_tb.dut.mp.loaded}
+gui_set_radix -radix {unsigned} -signals {Sim:BigPictureDatapath_tb.dut.mp.loaded}
 
 # Global: Highlighting
 
@@ -139,6 +147,7 @@ gui_change_stack_mode -mode list
 # Save global setting...
 
 # Wave/List view global setting
+gui_list_create_group_when_add -wave -enable
 gui_cov_show_value -switch false
 
 # Close all empty TopLevel windows
@@ -157,16 +166,17 @@ gui_list_set_filter -id ${Hier.1} -list { {Package 1} {All 0} {Process 1} {VirtP
 gui_list_set_filter -id ${Hier.1} -text {*}
 gui_change_design -id ${Hier.1} -design Sim
 catch {gui_list_expand -id ${Hier.1} BigPictureDatapath_tb}
-catch {gui_list_select -id ${Hier.1} {BigPictureDatapath_tb.dut}}
+catch {gui_list_expand -id ${Hier.1} BigPictureDatapath_tb.dut}
+catch {gui_list_select -id ${Hier.1} {BigPictureDatapath_tb.dut.mp}}
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Data.1} -text {*}
-gui_list_show_data -id ${Data.1} {BigPictureDatapath_tb.dut}
+gui_list_show_data -id ${Data.1} {BigPictureDatapath_tb.dut.mp}
 gui_show_window -window ${Data.1}
-catch { gui_list_select -id ${Data.1} {BigPictureDatapath_tb.dut.clock }}
+catch { gui_list_select -id ${Data.1} {BigPictureDatapath_tb.dut.mp.clock BigPictureDatapath_tb.dut.mp.location BigPictureDatapath_tb.dut.mp.reset BigPictureDatapath_tb.dut.mp.loadShapeNow_sync BigPictureDatapath_tb.dut.mp.masterPattern BigPictureDatapath_tb.dut.mp.shapeLocation BigPictureDatapath_tb.dut.mp.enR0 BigPictureDatapath_tb.dut.mp.d0 BigPictureDatapath_tb.dut.mp.loadShapeNow BigPictureDatapath_tb.dut.mp.enR1 BigPictureDatapath_tb.dut.mp.d1 BigPictureDatapath_tb.dut.mp.enR2 BigPictureDatapath_tb.dut.mp.d2 BigPictureDatapath_tb.dut.mp.enR3 BigPictureDatapath_tb.dut.mp.d3 BigPictureDatapath_tb.dut.mp.CLOCK_100 BigPictureDatapath_tb.dut.mp.finishLoading BigPictureDatapath_tb.dut.mp.loadShape BigPictureDatapath_tb.dut.mp.loaded }}
 gui_view_scroll -id ${Data.1} -vertical -set 0
 gui_view_scroll -id ${Data.1} -horizontal -set 0
 gui_view_scroll -id ${Hier.1} -vertical -set 0
@@ -176,7 +186,7 @@ gui_view_scroll -id ${Hier.1} -horizontal -set 0
 gui_src_value_annotate -id ${Source.1} -switch false
 gui_set_env TOGGLE::VALUEANNOTATE 0
 gui_open_source -id ${Source.1}  -replace -active BigPictureDatapath_tb /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/BigideaFSM.sv
-gui_view_scroll -id ${Source.1} -vertical -set 45
+gui_view_scroll -id ${Source.1} -vertical -set 75
 gui_src_set_reusable -id ${Source.1}
 
 # View 'Wave.1'
@@ -187,9 +197,9 @@ set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
 gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
-gui_wv_zoom_timerange -id ${Wave.1} 103 309
+gui_wv_zoom_timerange -id ${Wave.1} 0 325
 gui_list_add_group -id ${Wave.1} -after {New Group} {BigPictureDatapath_tb}
-gui_list_select -id ${Wave.1} {BigPictureDatapath_tb.GradeIt }
+gui_list_select -id ${Wave.1} {BigPictureDatapath_tb.masterPattern }
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
@@ -216,10 +226,12 @@ set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
 gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
-gui_wv_zoom_timerange -id ${Wave.2} 14 211
-gui_list_add_group -id ${Wave.2} -after {New Group} {ca}
-gui_list_add_group -id ${Wave.2} -after BigPictureDatapath_tb.dut.clock {ca|dut}
-gui_list_select -id ${Wave.2} {BigPictureDatapath_tb.dut.ca.prevCircle }
+gui_wv_zoom_timerange -id ${Wave.2} 0 325
+gui_list_add_group -id ${Wave.2} -after {New Group} {Group1}
+gui_list_add_group -id ${Wave.2} -after {New Group} {Group2}
+gui_list_add_group -id ${Wave.2} -after {New Group} {Group3}
+gui_list_expand -id ${Wave.2} BigPictureDatapath_tb.dut.mp.location
+gui_list_select -id ${Wave.2} {BigPictureDatapath_tb.dut.mp.location }
 gui_seek_criteria -id ${Wave.2} {Any Edge}
 
 
@@ -235,9 +247,9 @@ if { $groupExD } {
 }
 gui_list_set_filter -id ${Wave.2} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Wave.2} -text {*}
-gui_list_set_insertion_bar  -id ${Wave.2} -group ca|dut  -item BigPictureDatapath_tb.dut.maxNumGames -position below
+gui_list_set_insertion_bar  -id ${Wave.2} -group Group3  -position in
 
-gui_view_scroll -id ${Wave.2} -vertical -set 0
+gui_view_scroll -id ${Wave.2} -vertical -set 1275
 gui_show_grid -id ${Wave.2} -enable false
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
@@ -245,13 +257,14 @@ if {[gui_exist_window -window ${TopLevel.2}]} {
 	gui_set_active_window -window ${TopLevel.2}
 	gui_set_active_window -window ${Wave.1}
 }
-if {[gui_exist_window -window ${TopLevel.3}]} {
-	gui_set_active_window -window ${TopLevel.3}
-	gui_set_active_window -window ${Wave.2}
-}
 if {[gui_exist_window -window ${TopLevel.1}]} {
 	gui_set_active_window -window ${TopLevel.1}
 	gui_set_active_window -window ${Source.1}
+	gui_set_active_window -window ${DLPane.1}
+}
+if {[gui_exist_window -window ${TopLevel.3}]} {
+	gui_set_active_window -window ${TopLevel.3}
+	gui_set_active_window -window ${Wave.2}
 }
 #</Session>
 

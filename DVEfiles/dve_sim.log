@@ -1,2 +1,45 @@
-19:49:36    1588 --> ...                                                      [tcl] ucliGUI::start /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/simv -ucligui 
-19:49:36    1589 --> ...                                                          [tcl] set ucliGUI::state
+21:26:48    16 -->                                                             [tcl] ucliGUI::connect -toolargs -ucligui -toolexe ./simv -pid 47672 -toolin /tmp/vcs_20260326012647_47669_fionas..stdin -toolout /tmp/vcs_20260326012647_47669_fionas..stdout  
+21:26:48    17 -->                                                                 [tcl] set ucliGUI::state
+21:26:49    18 -->                                                                     [tcl] set ucliGUI::state
+21:26:49    19 -->                                                                         [tcl] ucliCore::getToolPID
+21:26:49    20 -->                                                                             [tcl] synopsys::env hasTB
+21:26:49    21 -->                                                                                 [tcl] trigger_hier_stack_context_switch 0
+21:26:49    22 -->                                                                                     [tcl] synUtils::setDVEInitPhase 1
+21:26:49    23 -->                                                                                         [tcl] gui_get_env SIMSETUP::SIMVPD
+21:26:49    24 -->                                                                                             [tcl] synopsys::dump -type VPD -file /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/inter.vpd -locking
+21:26:49    25 --> ...  [tcl] synopsys::dump -autoflush on -fid VPD0
+21:26:49    26 --> ...      [tcl] set ::dve_fid VPD0
+21:26:49    27 --> ...          [tcl] synUtils::setDVEInitPhase 0
+21:26:49    28 --> ...              [tcl] ucliCore::getToolPID
+21:26:49    29 --> ...                  [tcl] synUtils::sendTool -active _icl_setToolSocket /tmp/smlnprDzvGZ
+21:26:49    30 --> ...                      [tcl] synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.fionas.47672}
+21:26:49    31 --> ...                          [tcl] synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.fionas.47672}
+21:26:49    32 --> ...                              [tcl] dveMisc::vbusExpand BigPictureDatapath_tb
+21:26:49    33 --> ...                                  [tcl] config endofsim noexit
+21:26:49    34 --> ...                                      [tcl] config onfail enable all
+21:26:49    35 --> ...                                          [tcl] config syscaddplainmembers
+21:26:49    36 --> ...                                              [tcl] config syscaddsourcenames
+21:26:49    37 --> ...                                                  [tcl] config syscaddstructtypes
+21:26:49    38 --> ...                                                      [tcl] synopsys::listing -disable
+21:26:58    39 --> ...                                                          [tcl] dveMisc::vbusExpand BigPictureDatapath_tb.dut
+21:27:04    40 --> ...                                                              [tcl] synopsys::dump -add {BigPictureDatapath_tb.dut.CoinInserted BigPictureDatapath_tb.dut.CoinValue BigPictureDatapath_tb.dut.GradeIt BigPictureDatapath_tb.dut.Guess BigPictureDatapath_tb.dut.LoadShape BigPictureDatapath_tb.dut.LoadShapeNow BigPictureDatapath_tb.dut.NumGames BigPictureDatapath_tb.dut.RoundNumber BigPictureDatapath_tb.dut.ShapeLocation BigPictureDatapath_tb.dut.StartGame BigPictureDatapath_tb.dut.Znarly BigPictureDatapath_tb.dut.Zood BigPictureDatapath_tb.dut.canStart_AeqB BigPictureDatapath_tb.dut.canStart_AgtB BigPictureDatapath_tb.dut.can_start BigPictureDatapath_tb.dut.circle BigPictureDatapath_tb.dut.clock BigPictureDatapath_tb.dut.clrGrade BigPictureDatapath_tb.dut.clr_game BigPictureDatapath_tb.dut.coin_drop BigPictureDatapath_tb.dut.drop_game BigPictureDatapath_tb.dut.enGrade BigPictureDatapath_tb.dut.finish_loading BigPictureDatapath_tb.dut.gameWon BigPictureDatapath_tb.dut.masterPattern BigPictureDatapath_tb.dut.maxNumGames BigPictureDatapath_tb.dut.max_rounds BigPictureDatapath_tb.dut.pentagon BigPictureDatapath_tb.dut.reset BigPictureDatapath_tb.dut.roundOver BigPictureDatapath_tb.dut.shape_loading BigPictureDatapath_tb.dut.triangle BigPictureDatapath_tb.dut.znarly_win } -aggregates  -fid VPD0
+21:27:06    41 --> ...                                                                  [tcl] synopsys::run
+21:27:06    42 --> ...                                                                      [tcl] set ucliGUI::state
+21:27:06    43 --> ...                                                                          [tcl] gui_update_simulator_buttons
+21:27:06    44 --> ...                                                                              [tcl] set ucliGUI::state
+21:27:06    45 --> ...                                                                                  [tcl] set ucliGUI::state
+21:27:06    46 --> ...                                                                                      [tcl] set ucliGUI::state
+21:27:06    47 --> ...                                                                                          [tcl] catch {senv activeDomain} dveMisc::result 
+21:27:06    48 --> ...                                                                                              [tcl] set dveMisc::result
+21:27:06    49 --> ...                                                                                                  [tcl] gui_update_simulator_buttons
+21:27:46    50 --> ...  [tcl] if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
+21:27:46    51 --> ...      [tcl] synopsys::finish
+21:27:46    52 --> ...          [tcl] set ucliGUI::state
+21:27:46    53 --> ...              [tcl] gui_update_simulator_buttons
+21:27:46    54 --> ...                  [tcl] set ucliGUI::state
+21:27:46    55 --> ...                      [tcl] catch {senv activeDomain} dveMisc::result 
+21:27:46    56 --> ...                          [tcl] set dveMisc::result
+21:27:46    57 --> ...                              [tcl] gui_update_simulator_buttons
+21:27:46    58 --> ...                                  [tcl] catch {senv activeDomain} dveMisc::result 
+21:27:46    59 --> ...                                      [tcl] set dveMisc::result
+21:27:47    60 --> ...                                          [tcl] ucli_exit

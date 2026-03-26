@@ -1,0 +1,29 @@
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Mar 25 21:26 2026
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/inter.vpd' was opened successfully.
+
+Warning-[RT-NCMUCS] No condition matches in statement
+coinAccepter.sv, 90
+  No condition matches in 'unique case' statement. 'default' specification is 
+  missing, inside BigPictureDatapath_tb.dut.ca, at time 0s.
+
+                   0 NumGames=x finish=x can_start=x Znarly=x Zood=x gameWon=0
+                   5 NumGames=0 finish=x can_start=x Znarly=0 Zood=0 gameWon=0
+CORRECT test1
+                 185 NumGames=1 finish=x can_start=x Znarly=0 Zood=0 gameWon=0
+CORRECT test2
+                 195 NumGames=0 finish=x can_start=x Znarly=0 Zood=0 gameWon=0
+                 225 NumGames=0 finish=x can_start=x Znarly=0 Zood=4 gameWon=0
+CORRECT test3
+                 245 NumGames=0 finish=x can_start=x Znarly=0 Zood=0 gameWon=0
+                 255 NumGames=0 finish=x can_start=x Znarly=4 Zood=0 gameWon=0
+CORRECT test4
+$finish called from file "BigideaFSM.sv", line 294.
+$finish at simulation time                  267
+Simulation complete, time is 267.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 267
+CPU Time:      0.110 seconds;       Data structure size:   0.0Mb
+Wed Mar 25 21:27:46 2026

@@ -1,2 +1,31 @@
-ucliGUI::start /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/simv -ucligui 
 set ucliGUI::state
+set ucliGUI::state
+ucliCore::getToolPID
+synopsys::env hasTB
+trigger_hier_stack_context_switch 0
+synUtils::setDVEInitPhase 1
+synopsys::dump -type VPD -file /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/inter.vpd -locking
+synopsys::dump -autoflush on -fid VPD0
+set ::dve_fid VPD0
+synUtils::setDVEInitPhase 0
+ucliCore::getToolPID
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnprDzvGZ
+synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.fionas.47672}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.fionas.47672}
+config endofsim noexit
+config onfail enable all
+config syscaddplainmembers
+config syscaddsourcenames
+config syscaddstructtypes
+synopsys::listing -disable
+synopsys::dump -add {BigPictureDatapath_tb.dut.CoinInserted BigPictureDatapath_tb.dut.CoinValue BigPictureDatapath_tb.dut.GradeIt BigPictureDatapath_tb.dut.Guess BigPictureDatapath_tb.dut.LoadShape BigPictureDatapath_tb.dut.LoadShapeNow BigPictureDatapath_tb.dut.NumGames BigPictureDatapath_tb.dut.RoundNumber BigPictureDatapath_tb.dut.ShapeLocation BigPictureDatapath_tb.dut.StartGame BigPictureDatapath_tb.dut.Znarly BigPictureDatapath_tb.dut.Zood BigPictureDatapath_tb.dut.canStart_AeqB BigPictureDatapath_tb.dut.canStart_AgtB BigPictureDatapath_tb.dut.can_start BigPictureDatapath_tb.dut.circle BigPictureDatapath_tb.dut.clock BigPictureDatapath_tb.dut.clrGrade BigPictureDatapath_tb.dut.clr_game BigPictureDatapath_tb.dut.coin_drop BigPictureDatapath_tb.dut.drop_game BigPictureDatapath_tb.dut.enGrade BigPictureDatapath_tb.dut.finish_loading BigPictureDatapath_tb.dut.gameWon BigPictureDatapath_tb.dut.masterPattern BigPictureDatapath_tb.dut.maxNumGames BigPictureDatapath_tb.dut.max_rounds BigPictureDatapath_tb.dut.pentagon BigPictureDatapath_tb.dut.reset BigPictureDatapath_tb.dut.roundOver BigPictureDatapath_tb.dut.shape_loading BigPictureDatapath_tb.dut.triangle BigPictureDatapath_tb.dut.znarly_win } -aggregates  -fid VPD0
+synopsys::run
+set ucliGUI::state
+set ucliGUI::state
+set ucliGUI::state
+set ucliGUI::state
+if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
+synopsys::finish
+set ucliGUI::state
+set ucliGUI::state
+ucli_exit

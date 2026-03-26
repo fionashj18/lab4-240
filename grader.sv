@@ -1,4 +1,5 @@
-`default_nettype none
+//`default_nettype none
+
 module grader (
   input  logic [11:0] guess,
   input  logic [11:0] masterPattern,
@@ -90,145 +91,150 @@ module gradeItFSM
    output logic enGrade, clrGrade, roundOver);
 
   enum logic {IDLE = 1'b0, GRADE = 1'b1} cs, ns;
-  
+  logic GradeIt_prev, gradeItSeen;
+  assign gradeItSeen = GradeIt & ~GradeIt_prev;
+ 
   always_comb begin
    case (cs)
     IDLE: begin
-      ns = (GradeIt) ? GRADE : IDLE;
+      ns = (gradeItSeen) ? GRADE : IDLE;
       enGrade = 0;
       clrGrade = 1;
-      roundOver = 1;
+      roundOver = 0;
     end
     GRADE: begin
       ns = (GradeIt) ? GRADE : IDLE;
       enGrade = 1;
       clrGrade = 0;
-      roundOver = 0;
+      roundOver = ~GradeIt;
+
     end
    endcase
   end
 
   always_ff @(posedge clock, posedge reset)
-    if (reset)
-      cs <= IDLE;
-    else
-      cs <= ns;
-
+    if (reset) begin
+      cs           <= IDLE;
+      GradeIt_prev <= 1'b0;
+    end else begin
+      cs           <= ns;
+      GradeIt_prev <= GradeIt;
+    end
 endmodule : gradeItFSM
 
-module grader_tb;
-  logic [11:0] guess, masterPattern;
-  logic        GradeIt, CLOCK_100, reset;
-  logic [3:0]  Znarly, Zood;
-  logic        Znarly_Win;
+// module grader_tb;
+//   logic [11:0] guess, masterPattern;
+//   logic        GradeIt, CLOCK_100, reset;
+//   logic [3:0]  Znarly, Zood;
+//   logic        Znarly_Win;
 
-  grader dut (.*);
+//   grader dut (.*);
 
-  initial begin
-    CLOCK_100 = 0;
-    forever #5 CLOCK_100 = ~CLOCK_100;
-  end
+//   initial begin
+//     CLOCK_100 = 0;
+//     forever #5 CLOCK_100 = ~CLOCK_100;
+//   end
 
-  initial begin
-    $monitor($time,, "guess=%b  master=%b  GradeIt=%b  Znarly=%0d  Zood=%0d",
-             guess, masterPattern, GradeIt, Znarly, Zood);
+//   initial begin
+//     $monitor($time,, "guess=%b  master=%b  GradeIt=%b  Znarly=%0d  Zood=%0d",
+//              guess, masterPattern, GradeIt, Znarly, Zood);
 
-    // Reset
-    reset <= 1;
-    GradeIt <= 0;
-    guess <= 12'b0;
-    masterPattern <= 12'b0;
-    @(posedge CLOCK_100);
-    @(posedge CLOCK_100);
-    reset <= 0;
-    @(posedge CLOCK_100);
+//     // Reset
+//     reset <= 1;
+//     GradeIt <= 0;
+//     guess <= 12'b0;
+//     masterPattern <= 12'b0;
+//     @(posedge CLOCK_100);
+//     @(posedge CLOCK_100);
+//     reset <= 0;
+//     @(posedge CLOCK_100);
 
-    // Test 1: Znarly=4, Zood=0
-    // master = T C O D = 001_010_011_100, guess = same
-    masterPattern <= 12'b001_010_011_100;
-    guess         <= 12'b001_010_011_100;
-    GradeIt       <= 1;
-    @(posedge CLOCK_100);  // FSM: IDLE -> GRADE
-    @(posedge CLOCK_100);  // registers latch
-    #1;
-    if (Znarly != 4) $display("INCORRECT test1: Znarly expected 4, got %0d", Znarly);
-    if (Zood   != 0) $display("INCORRECT test1: Zood expected 0, got %0d", Zood);
-    GradeIt <= 0;
-    @(posedge CLOCK_100);  // FSM: GRADE -> IDLE (outputs clear)
+//     // Test 1: Znarly=4, Zood=0
+//     // master = T C O D = 001_010_011_100, guess = same
+//     masterPattern <= 12'b001_010_011_100;
+//     guess         <= 12'b001_010_011_100;
+//     GradeIt       <= 1;
+//     @(posedge CLOCK_100);  // FSM: IDLE -> GRADE
+//     @(posedge CLOCK_100);  // registers latch
+//     #1;
+//     if (Znarly != 4) $display("INCORRECT test1: Znarly expected 4, got %0d", Znarly);
+//     if (Zood   != 0) $display("INCORRECT test1: Zood expected 0, got %0d", Zood);
+//     GradeIt <= 0;
+//     @(posedge CLOCK_100);  // FSM: GRADE -> IDLE (outputs clear)
 
-    // Test 2: Znarly=0, Zood=0
-    // master = T T T T (001_001_001_001), guess = C C C C (010_010_010_010)
-    masterPattern <= 12'b001_001_001_001;
-    guess         <= 12'b010_010_010_010;
-    GradeIt       <= 1;
-    @(posedge CLOCK_100);
-    @(posedge CLOCK_100);
-    #1;
-    if (Znarly != 0) 
-      $display("INCORRECT test2: Znarly expected 0, got %0d", Znarly);
-    if (Zood   != 0) 
-      $display("INCORRECT test2: Zood expected 0, got %0d", Zood);
-    GradeIt <= 0;
-    @(posedge CLOCK_100);
+//     // Test 2: Znarly=0, Zood=0
+//     // master = T T T T (001_001_001_001), guess = C C C C (010_010_010_010)
+//     masterPattern <= 12'b001_001_001_001;
+//     guess         <= 12'b010_010_010_010;
+//     GradeIt       <= 1;
+//     @(posedge CLOCK_100);
+//     @(posedge CLOCK_100);
+//     #1;
+//     if (Znarly != 0) 
+//       $display("INCORRECT test2: Znarly expected 0, got %0d", Znarly);
+//     if (Zood   != 0) 
+//       $display("INCORRECT test2: Zood expected 0, got %0d", Zood);
+//     GradeIt <= 0;
+//     @(posedge CLOCK_100);
 
-    // Test 3: Znarly=0, Zood=4
-    // master = T C O D (001_010_011_100), guess = O D T C (011_100_001_010)
-    masterPattern <= 12'b001_010_011_100;
-    guess         <= 12'b011_100_001_010;
-    GradeIt       <= 1;
-    @(posedge CLOCK_100);
-    @(posedge CLOCK_100);
-    #1;
-    if (Znarly != 0) 
-      $display("INCORRECT test3: Znarly expected 0, got %0d", Znarly);
-    if (Zood   != 4) 
-      $display("INCORRECT test3: Zood expected 4, got %0d", Zood);
-    GradeIt <= 0;
-    @(posedge CLOCK_100);
+//     // Test 3: Znarly=0, Zood=4
+//     // master = T C O D (001_010_011_100), guess = O D T C (011_100_001_010)
+//     masterPattern <= 12'b001_010_011_100;
+//     guess         <= 12'b011_100_001_010;
+//     GradeIt       <= 1;
+//     @(posedge CLOCK_100);
+//     @(posedge CLOCK_100);
+//     #1;
+//     if (Znarly != 0) 
+//       $display("INCORRECT test3: Znarly expected 0, got %0d", Znarly);
+//     if (Zood   != 4) 
+//       $display("INCORRECT test3: Zood expected 4, got %0d", Zood);
+//     GradeIt <= 0;
+//     @(posedge CLOCK_100);
 
-    // Test 4: Znarly=0, Zood=1
-    // master = I Z D T = 101_110_100_001
-    // guess  = T T C C = 001_001_010_010
-    masterPattern <= 12'b101_110_100_001;
-    guess         <= 12'b001_001_010_010;
-    GradeIt       <= 1;
-    @(posedge CLOCK_100);
-    @(posedge CLOCK_100);
-    #1;
-    if (Znarly != 0) 
-      $display("INCORRECT test4: Znarly expected 0, got %0d", Znarly);
-    if (Zood   != 1) 
-      $display("INCORRECT test4: Zood expected 1, got %0d", Zood);
-    GradeIt <= 0;
-    @(posedge CLOCK_100);
+//     // Test 4: Znarly=0, Zood=1
+//     // master = I Z D T = 101_110_100_001
+//     // guess  = T T C C = 001_001_010_010
+//     masterPattern <= 12'b101_110_100_001;
+//     guess         <= 12'b001_001_010_010;
+//     GradeIt       <= 1;
+//     @(posedge CLOCK_100);
+//     @(posedge CLOCK_100);
+//     #1;
+//     if (Znarly != 0) 
+//       $display("INCORRECT test4: Znarly expected 0, got %0d", Znarly);
+//     if (Zood   != 1) 
+//       $display("INCORRECT test4: Zood expected 1, got %0d", Zood);
+//     GradeIt <= 0;
+//     @(posedge CLOCK_100);
 
-    // Test 5: Znarly=1, Zood=2
-    // master = I Z D T = 101_110_100_001
-    // guess  = I O T Z = 101_011_001_110
-    masterPattern <= 12'b101_110_100_001;
-    guess         <= 12'b101_011_001_110;
-    GradeIt       <= 1;
-    @(posedge CLOCK_100);
-    @(posedge CLOCK_100);
-    #1;
-    if (Znarly != 1) $display("INCORRECT test5: Znarly expected 1, got %0d", Znarly);
-    if (Zood   != 2) $display("INCORRECT test5: Zood expected 2, got %0d", Zood);
-    GradeIt <= 0;
-    @(posedge CLOCK_100);
+//     // Test 5: Znarly=1, Zood=2
+//     // master = I Z D T = 101_110_100_001
+//     // guess  = I O T Z = 101_011_001_110
+//     masterPattern <= 12'b101_110_100_001;
+//     guess         <= 12'b101_011_001_110;
+//     GradeIt       <= 1;
+//     @(posedge CLOCK_100);
+//     @(posedge CLOCK_100);
+//     #1;
+//     if (Znarly != 1) $display("INCORRECT test5: Znarly expected 1, got %0d", Znarly);
+//     if (Zood   != 2) $display("INCORRECT test5: Zood expected 2, got %0d", Zood);
+//     GradeIt <= 0;
+//     @(posedge CLOCK_100);
 
-    // Test 6: Znarly=4, Zood=0 -> game won
-    // master = I Z D T = 101_110_100_001, guess = same
-    masterPattern <= 12'b101_110_100_001;
-    guess         <= 12'b101_110_100_001;
-    GradeIt       <= 1;
-    @(posedge CLOCK_100);
-    @(posedge CLOCK_100);
-    #1;
-    if (Znarly != 4) $display("INCORRECT test6: Znarly expected 4, got %0d", Znarly);
-    if (Zood   != 0) $display("INCORRECT test6: Zood expected 0, got %0d", Zood);
-    GradeIt <= 0;
-    @(posedge CLOCK_100);
+//     // Test 6: Znarly=4, Zood=0 -> game won
+//     // master = I Z D T = 101_110_100_001, guess = same
+//     masterPattern <= 12'b101_110_100_001;
+//     guess         <= 12'b101_110_100_001;
+//     GradeIt       <= 1;
+//     @(posedge CLOCK_100);
+//     @(posedge CLOCK_100);
+//     #1;
+//     if (Znarly != 4) $display("INCORRECT test6: Znarly expected 4, got %0d", Znarly);
+//     if (Zood   != 0) $display("INCORRECT test6: Zood expected 0, got %0d", Zood);
+//     GradeIt <= 0;
+//     @(posedge CLOCK_100);
 
-    #1 $finish;
-  end
-endmodule : grader_tb
+//     #1 $finish;
+//   end
+// endmodule : grader_tb

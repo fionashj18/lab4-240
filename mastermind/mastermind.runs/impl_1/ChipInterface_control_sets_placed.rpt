@@ -1,0 +1,98 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
+| Date         : Wed Mar 25 23:22:42 2026
+| Host         : hh-1305-07.lan.local.cmu.edu running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
+| Command      : report_control_sets -verbose -file ChipInterface_control_sets_placed.rpt
+| Design       : ChipInterface
+| Device       : xc7s50
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    20 |
+|    Minimum number of control sets                        |    20 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   102 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    20 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     2 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    11 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             102 |           39 |
+| No           | No                    | Yes                    |              78 |           33 |
+| No           | Yes                   | No                     |              19 |            8 |
+| Yes          | No                    | No                     |               1 |            1 |
+| Yes          | No                    | Yes                    |             154 |           82 |
+| Yes          | Yes                   | No                     |               8 |            2 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------+----------------------------------------------+-----------------------------+------------------+----------------+--------------+
+|      Clock Signal      |                 Enable Signal                |       Set/Reset Signal      | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------+----------------------------------------------+-----------------------------+------------------+----------------+--------------+
+|  CLOCK_100_IBUF_BUFG   | bigDP/fsm2/FSM_sequential_currState_reg[1]_1 |                             |                1 |              1 |         1.00 |
+|  CLOCK_100_IBUF_BUFG   |                                              | bigDP/fsm2/clear0           |                2 |              4 |         2.00 |
+|  CLOCK_100_IBUF_BUFG   | bigDP/numGamesCtr/en0                        | BTN_IBUF[0]                 |                1 |              4 |         4.00 |
+|  CLOCK_100_IBUF_BUFG   | bigDP/control/E[0]                           | bigDP/fsm2/clear0           |                1 |              4 |         4.00 |
+|  CLOCK_100_IBUF_BUFG   |                                              | bigDP/g/znarlyReg/cs_reg    |                2 |              5 |         2.50 |
+|  clk_wiz/inst/clk_out1 | mmVGA/vgaCounter/col_counter/E[0]            | sync_reset/two/AR[0]        |                4 |             10 |         2.50 |
+|  CLOCK_100_IBUF_BUFG   |                                              | BTN_IBUF[0]                 |                6 |             13 |         2.17 |
+|  CLOCK_100_IBUF_BUFG   |                                              |                             |                9 |             13 |         1.44 |
+|  clk_wiz/inst/clk_out1 |                                              | sync_reset/two/AR[0]        |                7 |             14 |         2.00 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/Q_reg[0]_1[0]                 | sync_reset/two/AR[0]        |                7 |             18 |         2.57 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/Q_reg[1]_1[0]                 | sync_reset/two/AR[0]        |               11 |             18 |         1.64 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/Q_reg[0]_0[0]                 | sync_reset/two/AR[0]        |               11 |             18 |         1.64 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/E[0]                          | sync_reset/two/AR[0]        |               10 |             18 |         1.80 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/Q_reg[3]_2[0]                 | sync_reset/two/AR[0]        |                9 |             18 |         2.00 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/Q_reg[1]_0[0]                 | sync_reset/two/AR[0]        |               10 |             18 |         1.80 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/Q_reg[3]_1[0]                 | sync_reset/two/AR[0]        |                8 |             18 |         2.25 |
+|  clk_wiz/inst/clk_out1 | bigDP/roundCtr/Q_reg[2]_0[0]                 | sync_reset/two/AR[0]        |               12 |             18 |         1.50 |
+|  CLOCK_100_IBUF_BUFG   |                                              | sync_reset/two/AR[0]        |                6 |             19 |         3.17 |
+|  clk_wiz/inst/clk_out1 |                                              | vga_to_hdmi/inst/encr/AR[0] |               18 |             42 |         2.33 |
+|  clk_wiz/inst/clk_out1 |                                              |                             |               33 |            116 |         3.52 |
++------------------------+----------------------------------------------+-----------------------------+------------------+----------------+--------------+
+
+

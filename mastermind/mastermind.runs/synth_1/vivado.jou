@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Mar 25 23:21:32 2026
+# Process ID         : 220841
+# Current directory  : /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1
+# Command line       : vivado -log ChipInterface.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ChipInterface.tcl
+# Log file           : /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/ChipInterface.vds
+# Journal file       : /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/vivado.jou
+# Running On         : hh-1305-07.lan.local.cmu.edu
+# Platform           : RedHatEnterprise
+# Operating System   : Red Hat Enterprise Linux release 8.10 (Ootpa)
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i7-12700
+# CPU Frequency      : 2100.000 MHz
+# CPU Physical cores : 12
+# CPU Logical cores  : 20
+# Host memory        : 33109 MB
+# Swap memory        : 17179 MB
+# Total Virtual      : 50289 MB
+# Available Virtual  : 40198 MB
+#-----------------------------------------------------------
+source ChipInterface.tcl -notrace

@@ -1,9 +1,9 @@
-`default_nettype none
+// `default_nettype none
 
 module masterPattern (
   input  logic [1:0]  shapeLocation,
   input  logic [2:0]  loadShape,
-  input  logic        loadShapeNow, CLOCK_100, reset,
+  input  logic        loadShapeNow, CLOCK_100, reset, clr,
   output logic [11:0] masterPattern,
   output logic        finishLoading
 );
@@ -12,15 +12,10 @@ module masterPattern (
   assign clock = CLOCK_100;
   logic [3:0] loaded;
   logic [3:0] location;
-  logic loadShapeNow_sync;
-
-  Synchronizer #(1) sync (.async(loadShapeNow), 
-                          .clock(clock), 
-                          .sync(loadShapeNow_sync));
 
   // Finding which location shape goes to using Decoder
   Decoder #(4) dec (.I(shapeLocation), 
-                    .en(loadShapeNow_sync), 
+                    .en(loadShapeNow), 
                     .D(location));
 
   // Inputs for DFF (OR with feedback keeps loaded bits set once high)
@@ -31,13 +26,13 @@ module masterPattern (
   assign d3 = location[3] | loaded[3];
 
   // DFFs to track which locations have been loaded
-  DFlipFlop dff0 (.D(d0), .reset_L(~reset), .clock(clock), 
+  DFlipFlop dff0 (.D(d0), .reset_L(~(reset | clr)), .clock(clock),
                   .preset_L(1'b1), .Q(loaded[0]));
-  DFlipFlop dff1 (.D(d1), .reset_L(~reset), .clock(clock), 
+  DFlipFlop dff1 (.D(d1), .reset_L(~(reset | clr)), .clock(clock),
                   .preset_L(1'b1), .Q(loaded[1]));
-  DFlipFlop dff2 (.D(d2), .reset_L(~reset), .clock(clock), 
+  DFlipFlop dff2 (.D(d2), .reset_L(~(reset | clr)), .clock(clock),
                   .preset_L(1'b1), .Q(loaded[2]));
-  DFlipFlop dff3 (.D(d3), .reset_L(~reset), .clock(clock), 
+  DFlipFlop dff3 (.D(d3), .reset_L(~(reset | clr)), .clock(clock),
                   .preset_L(1'b1), .Q(loaded[3]));
 
   // Register enable
@@ -48,13 +43,13 @@ module masterPattern (
   assign enR3 = location[3] & ~loaded[3];
 
   // Registers storing the shape for each location
-  Register #(3) reg0 (.D(loadShape), .en(enR0), .clear(reset), 
+  Register #(3) reg0 (.D(loadShape), .en(enR0), .clear(reset | clr),
                       .clock(clock), .Q(masterPattern[2:0]));
-  Register #(3) reg1 (.D(loadShape), .en(enR1), .clear(reset), 
+  Register #(3) reg1 (.D(loadShape), .en(enR1), .clear(reset | clr),
                       .clock(clock), .Q(masterPattern[5:3]));
-  Register #(3) reg2 (.D(loadShape), .en(enR2), .clear(reset), 
+  Register #(3) reg2 (.D(loadShape), .en(enR2), .clear(reset | clr),
                       .clock(clock), .Q(masterPattern[8:6]));
-  Register #(3) reg3 (.D(loadShape), .en(enR3), .clear(reset), 
+  Register #(3) reg3 (.D(loadShape), .en(enR3), .clear(reset | clr),
                       .clock(clock), .Q(masterPattern[11:9]));
 
   // Checking all patterns are loaded
