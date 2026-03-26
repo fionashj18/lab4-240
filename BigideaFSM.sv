@@ -9,6 +9,10 @@ module BigPictureDatapath
      input  logic        StartGame,
      input  logic        GradeIt,
      input  logic        LoadShapeNow,
+     output logic        finish_loading,
+     output logic        can_start,
+     output logic        max_rounds,
+     output logic        znarly_win,
      output logic        gameWon,
      output logic [3:0]  Znarly,
      output logic [3:0]  Zood,
@@ -17,10 +21,7 @@ module BigPictureDatapath
      output logic [11:0] masterPattern);
 
     logic shape_loading, drop_game, roundOver, clr_game;
-    logic maxNumGames, finish_loading, can_start, max_rounds,
-          znarly_win;
-
-    
+    logic maxNumGames;
 
     BigPictureFSM fsm2 (.*);
 
@@ -94,8 +95,9 @@ module BigPictureFSM
     input  logic StartGame,
     input  logic GradeIt,
     input  logic LoadShapeNow,
-    output logic roundOver,
+    output logic shape_loading,
     output logic drop_game,
+    output logic roundOver,
     output logic clr_game,
     output logic gameWon);
 
@@ -109,6 +111,7 @@ module BigPictureFSM
     assign loadShapeNowSeen = LoadShapeNow & ~LoadShapeNow_bf;
 
     always_comb begin
+        shape_loading = 1'b0;
         drop_game = 1'b0;
         clr_game = 1'b0;
         roundOver = 1'b0;
@@ -117,6 +120,7 @@ module BigPictureFSM
         case (currState)
             IDLE: begin
                 if (loadShapeNowSeen) begin
+                    shape_loading = 1'b1;
                     nextState     = IDLE;
                 end
                 else if (startSeen & can_start & finish_loading & ~max_rounds) begin
@@ -262,10 +266,8 @@ module BigPictureDatapath_tb;
     else
       $display("CORRECT test2");
 
-    // -------------------------------------------------------
     // Test 3: Start game, guess O D T C (010_001_100_011)
     //   vs master T C O D -> Znarly=0, Zood=4
-    // -------------------------------------------------------
     StartGame = 1; @(posedge clock); StartGame = 0; @(posedge clock);
     Guess = 12'b010_001_100_011;
     GradeIt = 1; @(posedge clock); @(posedge clock);
@@ -277,10 +279,8 @@ module BigPictureDatapath_tb;
     else
       $display("CORRECT test3");
 
-    // -------------------------------------------------------
     // Test 4: Guess T C O D (100_011_010_001) = exact match
     //   Expected: Znarly=4, Zood=0
-    // -------------------------------------------------------
     Guess = 12'b100_011_010_001;
     GradeIt = 1; @(posedge clock); @(posedge clock);
     GradeIt = 0; @(posedge clock);

@@ -1,0 +1,2 @@
+ucliGUI::start /afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/simv -ucligui 
+set ucliGUI::state
