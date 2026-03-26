@@ -25,7 +25,7 @@ module BigPictureDatapath
     BigPictureFSM fsm2 (.*);
 
     // masterPat
-    masterPat mp (
+    masterPattern mp (
         .shapeLocation(ShapeLocation),
         .loadShape(LoadShape),
         .loadShapeNow(shape_loading),
@@ -43,10 +43,8 @@ module BigPictureDatapath
     logic coin_drop;
     coinAcceptorFSM ca (
         .pentagon, .triangle, .circle,
-        .coin(CoinValue),
         .clock, .reset,
         .drop(coin_drop),
-        .q2(), .q1(), .q0(),
         .credit()
     );
 
@@ -95,6 +93,7 @@ module BigPictureFSM
     input  logic GradeIt,
     input  logic LoadShapeNow,
     output logic roundOver,
+    output logic shape_loading,
     output logic drop_game,
     output logic clr_game,
     output logic gameWon);
@@ -109,6 +108,7 @@ module BigPictureFSM
     assign loadShapeNowSeen = LoadShapeNow & ~LoadShapeNow_bf;
 
     always_comb begin
+        shape_loading = 1'b0;
         drop_game = 1'b0;
         clr_game = 1'b0;
         roundOver = 1'b0;
@@ -117,6 +117,7 @@ module BigPictureFSM
         case (currState)
             IDLE: begin
                 if (loadShapeNowSeen) begin
+                    shape_loading = 1'b1;
                     nextState     = IDLE;
                 end
                 else if (startSeen & can_start & finish_loading & ~max_rounds) begin
@@ -236,25 +237,25 @@ module BigPictureDatapath_tb;
 
     // Test 2: Insert 4 circles -> NumGames should become 1
     //   CoinValue=01 (circle), pulse CoinInserted 4 times
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
+    CoinValue <= 2'b01; 
+    CoinInserted <= 1; 
     @(posedge clock); 
-    CoinInserted = 0; 
+    CoinInserted <= 0; 
     @(posedge clock);
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
+    CoinValue <= 2'b01; 
+    CoinInserted <= 1; 
     @(posedge clock); 
-    CoinInserted = 0;
+    CoinInserted <= 0;
     @(posedge clock);
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
+    CoinValue <= 2'b01; 
+    CoinInserted <= 1; 
     @(posedge clock); 
-    CoinInserted = 0; 
+    CoinInserted <= 0; 
     @(posedge clock);
-    CoinValue = 2'b01; 
-    CoinInserted = 1; 
+    CoinValue <= 2'b01; 
+    CoinInserted <= 1; 
     @(posedge clock); 
-    CoinInserted = 0; 
+    CoinInserted <= 0; 
     @(posedge clock);
     #1;
     if (NumGames != 4'd1)
