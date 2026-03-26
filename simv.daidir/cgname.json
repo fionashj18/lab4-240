@@ -5,35 +5,41 @@
         "module",
         1
     ],
-    "BigPictureDatapath_tb": [
-        "BigPictureDatapath_tb",
-        "LmuxE",
+    "gradernew": [
+        "gradernew",
+        "HJfzr",
         "module",
-        7
+        3
+    ],
+    "countShapes": [
+        "countShapes",
+        "mHHQy",
+        "module",
+        11
+    ],
+    "grader_tb": [
+        "grader_tb",
+        "pN4JF",
+        "module",
+        2
     ],
     "Adder": [
         "Adder",
         "xUt1z",
         "module",
-        3
+        7
+    ],
+    "Adder_0001": [
+        "Adder_0001",
+        "uTChp",
+        "module",
+        6
     ],
     "Multiplexer": [
         "Multiplexer",
         "UxyT3",
         "module",
         4
-    ],
-    "Mux2to1": [
-        "Mux2to1",
-        "wxUbx",
-        "module",
-        5
-    ],
-    "DFlipFlop": [
-        "DFlipFlop",
-        "NafP4",
-        "module",
-        6
     ],
     "ShiftRegisterSIPO": [
         "ShiftRegisterSIPO",
@@ -53,12 +59,6 @@
         "module",
         10
     ],
-    "Synchronizer": [
-        "Synchronizer",
-        "mLbx7",
-        "module",
-        14
-    ],
     "BusDriver": [
         "BusDriver",
         "Bt4nZ",
@@ -70,6 +70,12 @@
         "f0K8C",
         "module",
         13
+    ],
+    "BigPictureDatapath": [
+        "BigPictureDatapath",
+        "nbWP4",
+        "module",
+        19
     ],
     "...MASTER...": [
         "SIM",

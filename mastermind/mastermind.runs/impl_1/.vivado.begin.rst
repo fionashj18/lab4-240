@@ -25,11 +25,20 @@
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
+<<<<<<< HEAD
     <Process Command="vivado" Owner="fionas" Host="hh-1305-07.lan.local.cmu.edu" Pid="511646" HostCore="20" HostMemory="32333660">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
     <Process Command="vivado" Owner="fionas" Host="hh-1305-07.lan.local.cmu.edu" Pid="539508" HostCore="20" HostMemory="32333660">
+=======
+    <Process Command="vivado" Owner="fionas" Host="hh-1305-07.lan.local.cmu.edu" Pid="222067" HostCore="20" HostMemory="32333660">
+>>>>>>> e473c06ec204be285707fc6b97d21717a3d798ca
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="fionas" Host="hh-1305-07.lan.local.cmu.edu" Pid="603457" HostCore="20" HostMemory="32333660">
     </Process>
 </ProcessHandle>

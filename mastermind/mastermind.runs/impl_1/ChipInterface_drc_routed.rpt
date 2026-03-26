@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Thu Mar 26 02:31:24 2026
+| Date         : Thu Mar 26 04:14:49 2026
 | Host         : hh-1305-07.lan.local.cmu.edu running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 | Command      : report_drc -file ChipInterface_drc_routed.rpt -pb ChipInterface_drc_routed.pb -rpx ChipInterface_drc_routed.rpx
 | Design       : ChipInterface
@@ -24,18 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>
-             Checks found: 1
-+----------+----------+----------------------------+--------+
-| Rule     | Severity | Description                | Checks |
-+----------+----------+----------------------------+--------+
-| PDRC-144 | Warning  | SLICE_PairEqSame_C6C5_WARN | 1      |
-+----------+----------+----------------------------+--------+
+             Checks found: 0
++------+----------+-------------+--------+
+| Rule | Severity | Description | Checks |
++------+----------+-------------+--------+
++------+----------+-------------+--------+
 
 2. REPORT DETAILS
 -----------------
-PDRC-144#1 Warning
-SLICE_PairEqSame_C6C5_WARN  
-Luts C6LUT and C5LUT in use in site SLICE_X6Y7 with different equations without A6 pin connected to Global Logic High.
-Related violations: <none>
-
 

@@ -7,7 +7,7 @@
   **** SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
   **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
   **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-  **** Start of session at: Thu Mar 26 02:30:05 2026
+  **** Start of session at: Thu Mar 26 04:13:35 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -27,14 +27,16 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 539205
+INFO: [Synth 8-7075] Helper process launched with PID 603124
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2147.152 ; gain = 422.586 ; free physical = 13335 ; free virtual = 35917
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2145.598 ; gain = 421.680 ; free physical = 13043 ; free virtual = 35657
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'clk_40MHz', assumed default net type 'wire' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/chip_interface.sv:145]
+WARNING: [Synth 8-8895] 'clk_40MHz' is already implicitly declared on line 145 [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/chip_interface.sv:156]
 INFO: [Synth 8-6157] synthesizing module 'ChipInterface' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/chip_interface.sv:18]
 INFO: [Synth 8-6157] synthesizing module 'BigPictureDatapath' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/BigideaFSM.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'BigPictureFSM' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/BigideaFSM.sv:95]
-INFO: [Synth 8-6155] done synthesizing module 'BigPictureFSM' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/BigideaFSM.sv:95]
+INFO: [Synth 8-6157] synthesizing module 'BigPictureFSM' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/BigideaFSM.sv:96]
+INFO: [Synth 8-6155] done synthesizing module 'BigPictureFSM' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/BigideaFSM.sv:96]
 INFO: [Synth 8-6157] synthesizing module 'masterPattern' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/masterP.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'Decoder' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:77]
 	Parameter WIDTH bound to: 4 - type: integer 
@@ -63,31 +65,36 @@ INFO: [Synth 8-6157] synthesizing module 'Comparator__parameterized0' [/afs/andr
 	Parameter WIDTH bound to: 3 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'Comparator__parameterized0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'Adder' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:23]
-	Parameter WIDTH bound to: 4 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'Adder' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'Adder__parameterized0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:23]
 	Parameter WIDTH bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'Adder__parameterized0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'Adder' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:23]
 INFO: [Synth 8-6157] synthesizing module 'MagComp__parameterized0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:12]
 	Parameter WIDTH bound to: 3 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'MagComp__parameterized0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:12]
 INFO: [Synth 8-6157] synthesizing module 'Mux2to1' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:67]
 	Parameter WIDTH bound to: 3 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'Mux2to1' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:67]
+INFO: [Synth 8-6157] synthesizing module 'Adder__parameterized0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:23]
+	Parameter WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'Adder__parameterized0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:23]
 INFO: [Synth 8-6157] synthesizing module 'Subtracter' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:40]
 	Parameter WIDTH bound to: 4 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'Subtracter' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:40]
 INFO: [Synth 8-6157] synthesizing module 'Register__parameterized0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:107]
 	Parameter WIDTH bound to: 4 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'Register__parameterized0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:107]
-INFO: [Synth 8-6157] synthesizing module 'gradeItFSM' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:182]
-INFO: [Synth 8-226] default block is never used [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:195]
-INFO: [Synth 8-6155] done synthesizing module 'gradeItFSM' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:182]
+INFO: [Synth 8-6157] synthesizing module 'gradeItFSM' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:217]
+INFO: [Synth 8-226] default block is never used [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:230]
+INFO: [Synth 8-6155] done synthesizing module 'gradeItFSM' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:217]
+WARNING: [Synth 8-7071] port 'enGrading' of module 'gradeItFSM' is unconnected for instance 'control' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:211]
+WARNING: [Synth 8-7023] instance 'control' of module 'gradeItFSM' has 7 connections declared, but only 6 given [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:211]
 INFO: [Synth 8-6155] done synthesizing module 'grader' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:2]
 INFO: [Synth 8-6157] synthesizing module 'Register__parameterized1' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:107]
 	Parameter WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'Register__parameterized1' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:107]
 INFO: [Synth 8-6155] done synthesizing module 'BigPictureDatapath' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/BigideaFSM.sv:1]
+WARNING: [Synth 8-7071] port 'finish_loading' of module 'BigPictureDatapath' is unconnected for instance 'bigDP' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/chip_interface.sv:73]
+WARNING: [Synth 8-7071] port 'can_start' of module 'BigPictureDatapath' is unconnected for instance 'bigDP' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/chip_interface.sv:73]
+WARNING: [Synth 8-7023] instance 'bigDP' of module 'BigPictureDatapath' has 18 connections declared, but only 16 given [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/chip_interface.sv:73]
 INFO: [Synth 8-6157] synthesizing module 'MastermindVGA' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermindVGA.sv:48]
 INFO: [Synth 8-6157] synthesizing module 'vga' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermindVGA.sv:692]
 INFO: [Synth 8-6157] synthesizing module 'simple_counter' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermindVGA.sv:791]
@@ -134,11 +141,12 @@ INFO: [Synth 8-6155] done synthesizing module 'OneColdDecoder' (0#1) [/afs/andre
 INFO: [Synth 8-6155] done synthesizing module 'EightSevenSegmentDisplays' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/seven_segment.sv:15]
 INFO: [Synth 8-6157] synthesizing module 'Synchronizer' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:194]
 INFO: [Synth 8-6155] done synthesizing module 'Synchronizer' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/library.sv:194]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-539061-hh-1305-07.lan.local.cmu.edu/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-539061-hh-1305-07.lan.local.cmu.edu/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'hdmi_tx_0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-539061-hh-1305-07.lan.local.cmu.edu/realtime/hdmi_tx_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'hdmi_tx_0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-539061-hh-1305-07.lan.local.cmu.edu/realtime/hdmi_tx_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-603031-hh-1305-07.lan.local.cmu.edu/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-603031-hh-1305-07.lan.local.cmu.edu/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'hdmi_tx_0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-603031-hh-1305-07.lan.local.cmu.edu/realtime/hdmi_tx_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'hdmi_tx_0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/.Xil/Vivado-603031-hh-1305-07.lan.local.cmu.edu/realtime/hdmi_tx_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'ChipInterface' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/chip_interface.sv:18]
+WARNING: [Synth 8-3848] Net GradeIt_prev in module/entity gradeItFSM does not have driver. [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/grader.sv:222]
 WARNING: [Synth 8-3917] design ChipInterface has port LD[15] driven by constant 0
 WARNING: [Synth 8-3917] design ChipInterface has port LD[14] driven by constant 0
 WARNING: [Synth 8-3917] design ChipInterface has port LD[13] driven by constant 0
@@ -154,20 +162,21 @@ WARNING: [Synth 8-3917] design ChipInterface has port LD[4] driven by constant 0
 WARNING: [Synth 8-3917] design ChipInterface has port LD[3] driven by constant 0
 WARNING: [Synth 8-3917] design ChipInterface has port LD[2] driven by constant 0
 WARNING: [Synth 8-3917] design ChipInterface has port LD[1] driven by constant 0
+WARNING: [Synth 8-7129] Port reset in module masterPattern is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SW[12] in module ChipInterface is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2230.121 ; gain = 505.555 ; free physical = 13242 ; free virtual = 35829
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2229.566 ; gain = 505.648 ; free physical = 12950 ; free virtual = 35565
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2244.965 ; gain = 520.398 ; free physical = 13233 ; free virtual = 35819
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2247.379 ; gain = 523.461 ; free physical = 12937 ; free virtual = 35553
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2244.965 ; gain = 520.398 ; free physical = 13233 ; free virtual = 35819
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2247.379 ; gain = 523.461 ; free physical = 12937 ; free virtual = 35553
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2244.965 ; gain = 0.000 ; free physical = 13231 ; free virtual = 35817
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2247.379 ; gain = 0.000 ; free physical = 12938 ; free virtual = 35553
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -202,22 +211,22 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/ChipInterface_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2387.711 ; gain = 0.000 ; free physical = 13196 ; free virtual = 35783
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2390.125 ; gain = 0.000 ; free physical = 12895 ; free virtual = 35520
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2387.711 ; gain = 0.000 ; free physical = 13201 ; free virtual = 35787
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2390.125 ; gain = 0.000 ; free physical = 12899 ; free virtual = 35524
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2387.711 ; gain = 663.145 ; free physical = 13202 ; free virtual = 35789
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2390.125 ; gain = 666.207 ; free physical = 12896 ; free virtual = 35523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s50csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2395.715 ; gain = 671.148 ; free physical = 13202 ; free virtual = 35789
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2398.129 ; gain = 674.211 ; free physical = 12896 ; free virtual = 35523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -243,7 +252,7 @@ Applied set_property CLOCK_BUFFER_TYPE = NONE for hdmi_tx_p[2]. (constraint file
 Applied set_property KEEP_HIERARCHY = SOFT for clk_wiz. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for vga_to_hdmi. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2395.715 ; gain = 671.148 ; free physical = 13202 ; free virtual = 35789
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2398.129 ; gain = 674.211 ; free physical = 12897 ; free virtual = 35522
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'currState_reg' in module 'BigPictureFSM'
 INFO: [Synth 8-802] inferred FSM for state register 'currState_reg' in module 'coinAcceptorFSM'
@@ -270,7 +279,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'currState_reg' using encod
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'currState_reg' using encoding 'sequential' in module 'coinAcceptorFSM'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2395.715 ; gain = 671.148 ; free physical = 13197 ; free virtual = 35786
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2398.129 ; gain = 674.211 ; free physical = 12895 ; free virtual = 35522
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'mmVGA/numDrawer/segCheckX0' (offset_check) to 'mmVGA/numDrawer/segCheckX3'
 INFO: [Synth 8-223] decloning instance 'mmVGA/numDrawer/segCheckX0' (offset_check) to 'mmVGA/numDrawer/segCheckX6'
@@ -292,10 +301,10 @@ Detailed RTL Component Info :
 	   2 Input   10 Bit       Adders := 34    
 	   2 Input    9 Bit       Adders := 1     
 	   2 Input    8 Bit       Adders := 7     
-	   3 Input    5 Bit       Adders := 8     
+	   3 Input    5 Bit       Adders := 5     
 	   4 Input    5 Bit       Adders := 1     
 	   2 Input    4 Bit       Adders := 2     
-	   3 Input    4 Bit       Adders := 36    
+	   3 Input    4 Bit       Adders := 39    
 	   2 Input    2 Bit       Adders := 2     
 +---Registers : 
 	               11 Bit    Registers := 1     
@@ -303,7 +312,7 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 22    
 	                3 Bit    Registers := 36    
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 20    
+	                1 Bit    Registers := 16    
 +---Muxes : 
 	   2 Input   24 Bit        Muxes := 6     
 	   2 Input   11 Bit        Muxes := 1     
@@ -317,8 +326,8 @@ Detailed RTL Component Info :
 	   4 Input    2 Bit        Muxes := 1     
 	   2 Input    2 Bit        Muxes := 9     
 	   8 Input    2 Bit        Muxes := 1     
-	   4 Input    1 Bit        Muxes := 4     
-	   2 Input    1 Bit        Muxes := 51    
+	   4 Input    1 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 47    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -352,25 +361,25 @@ WARNING: [Synth 8-3917] design ChipInterface has port LD[2] driven by constant 0
 WARNING: [Synth 8-3917] design ChipInterface has port LD[1] driven by constant 0
 WARNING: [Synth 8-7129] Port SW[12] in module ChipInterface is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2415.723 ; gain = 691.156 ; free physical = 13114 ; free virtual = 35713
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2398.129 ; gain = 674.211 ; free physical = 12831 ; free virtual = 35469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2420.723 ; gain = 696.156 ; free physical = 13108 ; free virtual = 35707
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2417.129 ; gain = 693.211 ; free physical = 12800 ; free virtual = 35445
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2473.332 ; gain = 748.766 ; free physical = 13057 ; free virtual = 35656
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2437.160 ; gain = 713.242 ; free physical = 12782 ; free virtual = 35427
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2489.348 ; gain = 764.781 ; free physical = 13040 ; free virtual = 35639
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2446.176 ; gain = 722.258 ; free physical = 12772 ; free virtual = 35417
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -388,37 +397,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.160 ; gain = 884.594 ; free physical = 12937 ; free virtual = 35536
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.988 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.160 ; gain = 884.594 ; free physical = 12937 ; free virtual = 35536
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.988 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.160 ; gain = 884.594 ; free physical = 12935 ; free virtual = 35534
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.988 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.160 ; gain = 884.594 ; free physical = 12935 ; free virtual = 35534
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.988 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.160 ; gain = 884.594 ; free physical = 12935 ; free virtual = 35534
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.988 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.160 ; gain = 884.594 ; free physical = 12935 ; free virtual = 35534
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.988 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -438,44 +447,44 @@ Report Cell Usage:
 +------+--------+------+
 |1     |clk_wiz |     1|
 |2     |hdmi_tx |     1|
-|3     |CARRY4  |   111|
-|4     |LUT1    |    34|
-|5     |LUT2    |   214|
-|6     |LUT3    |    82|
-|7     |LUT4    |   216|
-|8     |LUT5    |   172|
-|9     |LUT6    |   309|
-|10    |MUXF7   |    27|
-|11    |FDCE    |   199|
-|12    |FDRE    |    50|
+|3     |CARRY4  |    92|
+|4     |LUT1    |    25|
+|5     |LUT2    |   174|
+|6     |LUT3    |    69|
+|7     |LUT4    |   154|
+|8     |LUT5    |   139|
+|9     |LUT6    |   210|
+|10    |MUXF7   |     9|
+|11    |FDCE    |   139|
+|12    |FDRE    |    43|
 |13    |IBUF    |    19|
 |14    |OBUF    |    40|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.160 ; gain = 884.594 ; free physical = 12935 ; free virtual = 35534
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.988 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 17 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 2609.160 ; gain = 741.848 ; free physical = 12935 ; free virtual = 35534
-Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2609.168 ; gain = 884.594 ; free physical = 12935 ; free virtual = 35534
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2589.988 ; gain = 723.324 ; free physical = 12637 ; free virtual = 35283
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2589.996 ; gain = 866.070 ; free physical = 12637 ; free virtual = 35283
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2612.129 ; gain = 0.000 ; free physical = 13089 ; free virtual = 35688
-INFO: [Netlist 29-17] Analyzing 138 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2589.996 ; gain = 0.000 ; free physical = 12796 ; free virtual = 35442
+INFO: [Netlist 29-17] Analyzing 101 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2671.125 ; gain = 0.000 ; free physical = 13084 ; free virtual = 35683
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2646.016 ; gain = 0.000 ; free physical = 12796 ; free virtual = 35442
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: a2968976
+Synth Design complete | Checksum: aa267871
 INFO: [Common 17-83] Releasing license: Synthesis
-123 Infos, 57 Warnings, 0 Critical Warnings and 0 Errors encountered.
+124 Infos, 65 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2671.125 ; gain = 1115.055 ; free physical = 13084 ; free virtual = 35683
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1807.030; main = 1807.030; forked = 273.535
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3334.215; main = 2671.129; forked = 938.496
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2695.137 ; gain = 0.000 ; free physical = 13085 ; free virtual = 35684
+synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2646.016 ; gain = 1092.625 ; free physical = 12796 ; free virtual = 35442
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1782.108; main = 1782.108; forked = 274.645
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3336.629; main = 2646.020; forked = 938.496
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2670.027 ; gain = 0.000 ; free physical = 12796 ; free virtual = 35442
 INFO: [Common 17-1381] The checkpoint '/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/synth_1/ChipInterface.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file ChipInterface_utilization_synth.rpt -pb ChipInterface_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Mar 26 02:30:43 2026...
+INFO: [Common 17-206] Exiting Vivado at Thu Mar 26 04:14:09 2026...

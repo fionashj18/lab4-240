@@ -38,37 +38,6 @@ module ChipInterface (
   logic [11:0] masterPattern;
   logic gameWon;
 
-  // Track which of the 4 shape positions have been loaded.
-  // BTN[3] acts as LoadShapeNow until all positions are loaded,
-  // then it acts as GradeIt.
-  logic [3:0] positionsLoaded;
-  logic       allLoaded;
-
-  assign allLoaded = &positionsLoaded;
-
-  always_ff @(posedge CLOCK_100) begin
-    if (BTN[0] || BTN[2])           // reset or StartGame clears tracking
-      positionsLoaded <= 4'b0;
-    else if (BTN[3] && !allLoaded)  // LoadShapeNow: mark this position loaded
-      positionsLoaded[SW[4:3]] <= 1'b1;
-  end
-
-  // Prevent the same BTN[3] press that loaded the 4th shape from
-  // immediately triggering GradeIt. Require BTN[3] to be released
-  // at least once after allLoaded before grading is allowed.
-  logic btn3Released;
-  always_ff @(posedge CLOCK_100) begin
-    if (BTN[0] || BTN[2])
-      btn3Released <= 1'b0;
-    else if (!allLoaded)
-      btn3Released <= 1'b0;
-    else if (!BTN[3])               // BTN[3] released while allLoaded
-      btn3Released <= 1'b1;
-  end
-
-  logic gradeIt, loadShapeNow;
-  assign gradeIt      = BTN[3] & allLoaded & btn3Released;
-  assign loadShapeNow = BTN[3] & ~allLoaded;
 
   BigPictureDatapath bigDP (
     .clock(CLOCK_100),
@@ -81,6 +50,8 @@ module ChipInterface (
     .StartGame(BTN[2]),
     .GradeIt(gradeIt),
     .LoadShapeNow(loadShapeNow),
+    .GradeIt(BTN[3]),
+    .LoadShapeNow(BTN[3]),
     .Znarly,
     .Zood,
     .RoundNumber,
@@ -124,6 +95,13 @@ module ChipInterface (
                         .masterPattern(masterPattern),
                         .displayMasterPattern(SW[13]),
                         .loadZnarlyZood(gradeIt)
+                        .loadGuess(BTN[3]),
+                        .znarly(Znarly), 
+                        .zood(Zood), 
+                        .clearGame(BTN[0]),
+                        .masterPattern(masterPattern),
+                        .displayMasterPattern(SW[15]),
+			                  .loadZnarlyZood(BTN[3])
                        );
 
 
@@ -144,8 +122,7 @@ module ChipInterface (
      Synchronizer sync_reset(.async(BTN[0]), 
                              .clock(clk_40MHz), 
                              .sync(reset_sync)
-                            );
-     assign LD[15:1] = 15'b0;                   
+                            );                  
                         
 
 /*
@@ -189,5 +166,4 @@ module ChipInterface (
         .TMDS_DATA_P(hdmi_tx_p),        
         .TMDS_DATA_N(hdmi_tx_n)          
     );
-
 endmodule : ChipInterface

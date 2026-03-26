@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date             : Thu Mar 26 02:31:26 2026
+| Date             : Thu Mar 26 04:14:51 2026
 | Host             : hh-1305-07.lan.local.cmu.edu running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 | Command          : report_power -file ChipInterface_power_routed.rpt -pb ChipInterface_power_summary_routed.pb -rpx ChipInterface_power_routed.rpx
 | Design           : ChipInterface
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.322        |
+| Total On-Chip Power (W)  | 0.324        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.249        |
+| Dynamic (W)              | 0.252        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 4.9          |
 | Max Ambient (C)          | 83.4         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.003 |        6 |       --- |             --- |
-| Slice Logic             |     0.002 |     1921 |       --- |             --- |
-|   LUT as Logic          |     0.002 |     1010 |     32600 |            3.10 |
-|   CARRY4                |    <0.001 |      111 |      8150 |            1.36 |
-|   Register              |    <0.001 |      392 |     65200 |            0.60 |
+| Slice Logic             |     0.002 |     1532 |       --- |             --- |
+|   LUT as Logic          |     0.001 |      798 |     32600 |            2.45 |
+|   CARRY4                |    <0.001 |       92 |      8150 |            1.13 |
+|   Register              |    <0.001 |      311 |     65200 |            0.48 |
 |   LUT as Shift Register |    <0.001 |       15 |      9600 |            0.16 |
-|   F7/F8 Muxes           |    <0.001 |       27 |     32600 |            0.08 |
-|   Others                |     0.000 |      101 |       --- |             --- |
-| Signals                 |     0.002 |     1295 |       --- |             --- |
+|   F7/F8 Muxes           |    <0.001 |        9 |     32600 |            0.03 |
+|   Others                |     0.000 |       87 |       --- |             --- |
+| Signals                 |     0.001 |     1001 |       --- |             --- |
 | MMCM                    |     0.106 |        1 |         5 |           20.00 |
-| I/O                     |     0.137 |       68 |       210 |           32.38 |
+| I/O                     |     0.140 |       68 |       210 |           32.38 |
 | Static Power            |     0.072 |          |           |                 |
-| Total                   |     0.322 |          |           |                 |
+| Total                   |     0.324 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.018 |       0.008 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.072 |       0.059 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.042 |       0.041 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.043 |       0.042 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -130,7 +130,7 @@ Table of Contents
 +----------------------+---------------------------------+-----------------+
 | clk_out1_clk_wiz_0   | clk_wiz/inst/clk_out1_clk_wiz_0 |            25.0 |
 | clk_out2_clk_wiz_0   | clk_wiz/inst/clk_out2_clk_wiz_0 |             5.0 |
-| clk_wiz/inst/clk_in1 | CLOCK_100_IBUF                  |            10.0 |
+| clk_wiz/inst/clk_in1 | CLOCK_100_IBUF_BUFG             |            10.0 |
 | clkfbout_clk_wiz_0   | clk_wiz/inst/clkfbout_clk_wiz_0 |            10.0 |
 +----------------------+---------------------------------+-----------------+
 
@@ -144,12 +144,12 @@ Table of Contents
 +-------------------+-----------+
 | Name              | Power (W) |
 +-------------------+-----------+
-| ChipInterface     |     0.249 |
+| ChipInterface     |     0.252 |
 |   clk_wiz         |     0.107 |
 |     inst          |     0.107 |
 |   mmVGA           |     0.002 |
 |     vgaCounter    |     0.002 |
-|       col_counter |     0.002 |
+|       col_counter |     0.001 |
 |   vga_to_hdmi     |     0.138 |
 |     inst          |     0.138 |
 +-------------------+-----------+

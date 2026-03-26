@@ -37,7 +37,6 @@ module ChipInterface (
   logic [3:0] Znarly, Zood, RoundNumber, NumGames;
   logic [11:0] masterPattern;
   logic gameWon;
-  logic clk_40MHz, clk_200MHz;
 
   // Track which of the 4 shape positions have been loaded.
   // BTN[3] acts as LoadShapeNow until all positions are loaded,
@@ -67,12 +66,12 @@ module ChipInterface (
       btn3Released <= 1'b1;
   end
 
-  logic gradeIt, loadShapeNow, finish_loading, can_start;
+  logic gradeIt, loadShapeNow;
   assign gradeIt      = BTN[3] & allLoaded & btn3Released;
   assign loadShapeNow = BTN[3] & ~allLoaded;
 
   BigPictureDatapath bigDP (
-    .clock(clk_40MHz),
+    .clock(CLOCK_100),
     .reset(BTN[0]),
     .Guess(SW[11:0]),
     .LoadShape(SW[2:0]),
@@ -85,8 +84,6 @@ module ChipInterface (
     .Znarly,
     .Zood,
     .RoundNumber,
-    .finish_loading,
-    .can_start,
     .NumGames,
     .gameWon(LD[0]),
     .masterPattern(masterPattern)
@@ -156,7 +153,7 @@ module ChipInterface (
  *  If you do, the Zorgmeister will Zzzzzt you!
  */
 
-
+    logic clk_40MHz, clk_200MHz;
     logic locked;
     
     // 2 clk freq outputs
@@ -192,5 +189,4 @@ module ChipInterface (
         .TMDS_DATA_P(hdmi_tx_p),        
         .TMDS_DATA_N(hdmi_tx_n)          
     );
-
 endmodule : ChipInterface
