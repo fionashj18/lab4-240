@@ -85,8 +85,6 @@ module BigPictureDatapath
         .Znarly_Win(znarly_win)
     );
 
-    gradeItFSM control (.*);
-
     // Latch gameWon until clr_game clears it (so LED stays on)
     Register #(1) gameWonReg (.D(1'b1), .en(gameWon_pulse),
                               .clear(clr_game | reset), .clock, .Q(gameWon));
@@ -106,9 +104,9 @@ module BigPictureFSM
     output logic shape_loading,
     output logic drop_game,
     output logic clr_game,
-    output logic gameWon_pulse);
+    output logic gameWon);
 
-    enum logic [2:0] {IDLE, IN_GAME, GRADING, FINISH} currState, nextState;
+    enum logic [2:0] {IDLE, LOAD_PATTERN, IN_GAME, GRADING, FINISH} currState, nextState;
 
     logic StartGame_bf, GradeIt_bf, LoadShapeNow_bf,
           startSeen, gradeItSeen, loadShapeNowSeen;
@@ -121,28 +119,37 @@ module BigPictureFSM
         shape_loading = 1'b0;
         drop_game = 1'b0;
         clr_game = 1'b0;
-        // roundOver = 1'b0;
+        roundOver = 1'b0;
         gameWon_pulse = 1'b0;
         nextState     = currState;
         case (currState)
             IDLE: begin
                 if (loadShapeNowSeen) begin
                     shape_loading = 1'b1;
-                    nextState     = IDLE;
-                end
-                else if (startSeen & can_start & finish_loading & ~max_rounds) 
-                begin
-                    drop_game = 1'b1;
-                    // roundOver = 1'b1;
-                    nextState = IN_GAME;
+                    nextState     = LOAD_PATTERN;
                 end
                 else begin
                     nextState = IDLE;
                 end
             end
+            LOAD_PATTERN: begin
+                if (loadShapeNowSeen & ~finish_loading) begin
+                    shape_loading = 1'b1;
+                end 
+                else if (startSeen & can_start & finish_loading & ~max_rounds) 
+                begin
+                    drop_game = 1'b1;
+                    roundOver = 1'b1;
+                    nextState = IN_GAME;
+                end
+                else begin
+                    nextState = LOAD_PATTERN;
+                end
+            end
  
             IN_GAME: begin
                 if (gradeItSeen) begin
+                    roundOver = 1'b1; 
                     nextState = GRADING;
                 end
                 else begin
@@ -152,7 +159,7 @@ module BigPictureFSM
  
             GRADING: begin
                 if (znarly_win | max_rounds) begin
-                    gameWon_pulse = znarly_win;
+                    gameWon = znarly_win;
                     nextState     = FINISH;
                 end
                 else begin
