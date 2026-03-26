@@ -5,6 +5,12 @@
         "module",
         1
     ],
+    "BigPictureDatapath_tb": [
+        "BigPictureDatapath_tb",
+        "LmuxE",
+        "module",
+        7
+    ],
     "Adder": [
         "Adder",
         "xUt1z",
@@ -22,6 +28,12 @@
         "wxUbx",
         "module",
         5
+    ],
+    "DFlipFlop": [
+        "DFlipFlop",
+        "NafP4",
+        "module",
+        6
     ],
     "ShiftRegisterSIPO": [
         "ShiftRegisterSIPO",
@@ -45,7 +57,7 @@
         "Synchronizer",
         "mLbx7",
         "module",
-        16
+        14
     ],
     "BusDriver": [
         "BusDriver",
@@ -58,24 +70,6 @@
         "f0K8C",
         "module",
         13
-    ],
-    "grader": [
-        "grader",
-        "ITdSg",
-        "module",
-        14
-    ],
-    "grader_tb": [
-        "grader_tb",
-        "pN4JF",
-        "module",
-        11
-    ],
-    "BigPictureDatapath_tb": [
-        "BigPictureDatapath_tb",
-        "LmuxE",
-        "module",
-        6
     ],
     "...MASTER...": [
         "SIM",

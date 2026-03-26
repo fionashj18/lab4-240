@@ -1,0 +1,288 @@
+
+*** Running vivado
+    with args -log hdmi_tx_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source hdmi_tx_0.tcl
+
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Wed Mar 25 22:19:07 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source hdmi_tx_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/afs/andrew.cmu.edu/usr20/fionas/Downloads/hdmi_tx_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: hdmi_tx_0
+Command: synth_design -top hdmi_tx_0 -part xc7s50csga324-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Device 21-403] Loading part xc7s50csga324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 69761
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2134.109 ; gain = 418.711 ; free physical = 16264 ; free virtual = 38470
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-11065] parameter 'CTRLTOKEN0' becomes localparam in 'encode' with formal parameter declaration list [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:145]
+WARNING: [Synth 8-11065] parameter 'CTRLTOKEN1' becomes localparam in 'encode' with formal parameter declaration list [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:146]
+WARNING: [Synth 8-11065] parameter 'CTRLTOKEN2' becomes localparam in 'encode' with formal parameter declaration list [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:147]
+WARNING: [Synth 8-11065] parameter 'CTRLTOKEN3' becomes localparam in 'encode' with formal parameter declaration list [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:148]
+INFO: [Synth 8-6157] synthesizing module 'hdmi_tx_0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/synth/hdmi_tx_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'hdmi_tx_v1_0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/hdmi_tx_v1_0.v:70]
+INFO: [Synth 8-6157] synthesizing module 'srldelay' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/srldelay.v:70]
+INFO: [Synth 8-6157] synthesizing module 'SRL16E' [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:149045]
+INFO: [Synth 8-6155] done synthesizing module 'SRL16E' (0#1) [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:149045]
+INFO: [Synth 8-6155] done synthesizing module 'srldelay' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/srldelay.v:70]
+INFO: [Synth 8-6157] synthesizing module 'encode' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:79]
+INFO: [Synth 8-6155] done synthesizing module 'encode' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:79]
+INFO: [Synth 8-6157] synthesizing module 'encode__parameterized0' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:79]
+INFO: [Synth 8-6155] done synthesizing module 'encode__parameterized0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:79]
+INFO: [Synth 8-6157] synthesizing module 'encode__parameterized1' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:79]
+INFO: [Synth 8-6155] done synthesizing module 'encode__parameterized1' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:79]
+INFO: [Synth 8-6157] synthesizing module 'serdes_10_to_1' [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/serdes_10_to_1.v:43]
+INFO: [Synth 8-6157] synthesizing module 'OSERDESE2' [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:103679]
+INFO: [Synth 8-6155] done synthesizing module 'OSERDESE2' (0#1) [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:103679]
+INFO: [Synth 8-6157] synthesizing module 'OSERDESE2__parameterized0' [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:103679]
+INFO: [Synth 8-6155] done synthesizing module 'OSERDESE2__parameterized0' (0#1) [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:103679]
+INFO: [Synth 8-6155] done synthesizing module 'serdes_10_to_1' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/serdes_10_to_1.v:43]
+INFO: [Synth 8-6157] synthesizing module 'OBUFDS' [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:99442]
+INFO: [Synth 8-6155] done synthesizing module 'OBUFDS' (0#1) [/afs/ece.cmu.edu/support/xilinx/xilinx.release/Vivado-2024.2/Vivado/2024.2/scripts/rt/data/unisim_comp.v:99442]
+INFO: [Synth 8-6155] done synthesizing module 'hdmi_tx_v1_0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/hdmi_tx_v1_0.v:70]
+INFO: [Synth 8-6155] done synthesizing module 'hdmi_tx_0' (0#1) [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/synth/hdmi_tx_0.v:53]
+WARNING: [Synth 8-6014] Unused sequential element ade_q_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:174]
+WARNING: [Synth 8-6014] Unused sequential element ade_reg_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:175]
+WARNING: [Synth 8-6014] Unused sequential element ade_reg_q_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:176]
+WARNING: [Synth 8-6014] Unused sequential element ade_reg_qq_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:177]
+WARNING: [Synth 8-6014] Unused sequential element adin_q_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:184]
+WARNING: [Synth 8-6014] Unused sequential element adin_reg_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:185]
+WARNING: [Synth 8-6014] Unused sequential element ade_q_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:174]
+WARNING: [Synth 8-6014] Unused sequential element ade_reg_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:175]
+WARNING: [Synth 8-6014] Unused sequential element ade_reg_q_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:176]
+WARNING: [Synth 8-6014] Unused sequential element ade_reg_qq_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:177]
+WARNING: [Synth 8-6014] Unused sequential element adin_q_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:184]
+WARNING: [Synth 8-6014] Unused sequential element adin_reg_reg was removed.  [/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.gen/sources_1/ip/hdmi_tx_0/hdl/encode.v:185]
+WARNING: [Synth 8-7129] Port adin[3] in module encode__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port adin[2] in module encode__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port adin[1] in module encode__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port adin[0] in module encode__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ade in module encode__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port adin[3] in module encode is either unconnected or has no load
+WARNING: [Synth 8-7129] Port adin[2] in module encode is either unconnected or has no load
+WARNING: [Synth 8-7129] Port adin[1] in module encode is either unconnected or has no load
+WARNING: [Synth 8-7129] Port adin[0] in module encode is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ade in module encode is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2210.047 ; gain = 494.648 ; free physical = 16217 ; free virtual = 38427
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2227.859 ; gain = 512.461 ; free physical = 16204 ; free virtual = 38414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2227.859 ; gain = 512.461 ; free physical = 16204 ; free virtual = 38414
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2233.797 ; gain = 0.000 ; free physical = 16197 ; free virtual = 38407
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2375.609 ; gain = 0.000 ; free physical = 16129 ; free virtual = 38339
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2375.609 ; gain = 0.000 ; free physical = 16121 ; free virtual = 38331
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2375.609 ; gain = 660.211 ; free physical = 16145 ; free virtual = 38355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7s50csga324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2383.613 ; gain = 668.215 ; free physical = 16145 ; free virtual = 38355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2383.613 ; gain = 668.215 ; free physical = 16153 ; free virtual = 38364
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2383.613 ; gain = 668.215 ; free physical = 16153 ; free virtual = 38365
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   5 Input    5 Bit       Adders := 6     
+	   4 Input    5 Bit       Adders := 3     
+	   8 Input    4 Bit       Adders := 6     
+	   2 Input    4 Bit       Adders := 3     
++---XORs : 
+	   2 Input      1 Bit         XORs := 42    
++---Registers : 
+	               10 Bit    Registers := 3     
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 3     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 9     
+	                1 Bit    Registers := 18    
++---Muxes : 
+	   5 Input   10 Bit        Muxes := 3     
+	   2 Input   10 Bit        Muxes := 6     
+	   2 Input    8 Bit        Muxes := 3     
+	   2 Input    5 Bit        Muxes := 15    
+	   2 Input    1 Bit        Muxes := 21    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2383.613 ; gain = 668.215 ; free physical = 16146 ; free virtual = 38362
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2407.613 ; gain = 692.215 ; free physical = 16123 ; free virtual = 38339
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2408.613 ; gain = 693.215 ; free physical = 16123 ; free virtual = 38339
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2427.645 ; gain = 712.246 ; free physical = 16103 ; free virtual = 38319
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.457 ; gain = 864.059 ; free physical = 15970 ; free virtual = 38186
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.457 ; gain = 864.059 ; free physical = 15970 ; free virtual = 38186
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.457 ; gain = 864.059 ; free physical = 15969 ; free virtual = 38185
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.457 ; gain = 864.059 ; free physical = 15969 ; free virtual = 38185
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.457 ; gain = 864.059 ; free physical = 15969 ; free virtual = 38185
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.457 ; gain = 864.059 ; free physical = 15969 ; free virtual = 38185
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |LUT2      |     9|
+|2     |LUT3      |    33|
+|3     |LUT4      |    23|
+|4     |LUT5      |    78|
+|5     |LUT6      |    97|
+|6     |OSERDESE2 |     8|
+|8     |SRL16E    |    27|
+|9     |FDCE      |    42|
+|10    |FDRE      |    87|
+|11    |OBUFDS    |     4|
++------+----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.457 ; gain = 864.059 ; free physical = 15969 ; free virtual = 38185
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2579.457 ; gain = 716.309 ; free physical = 15969 ; free virtual = 38185
+Synthesis Optimization Complete : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2579.465 ; gain = 864.059 ; free physical = 15969 ; free virtual = 38185
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2579.465 ; gain = 0.000 ; free physical = 15969 ; free virtual = 38185
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2635.484 ; gain = 0.000 ; free physical = 16135 ; free virtual = 38352
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: f739526b
+INFO: [Common 17-83] Releasing license: Synthesis
+43 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2635.484 ; gain = 1085.547 ; free physical = 16135 ; free virtual = 38351
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1805.497; main = 1766.926; forked = 276.187
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3322.113; main = 2635.488; forked = 938.496
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2659.496 ; gain = 0.000 ; free physical = 16135 ; free virtual = 38351
+INFO: [Common 17-1381] The checkpoint '/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/hdmi_tx_0_synth_1/hdmi_tx_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP hdmi_tx_0, cache-ID = 29d35abffad17505
+INFO: [Coretcl 2-1174] Renamed 9 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2659.496 ; gain = 0.000 ; free physical = 16136 ; free virtual = 38353
+INFO: [Common 17-1381] The checkpoint '/afs/andrew.cmu.edu/usr20/fionas/private/18240/lab4/mastermind/mastermind.runs/hdmi_tx_0_synth_1/hdmi_tx_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file hdmi_tx_0_utilization_synth.rpt -pb hdmi_tx_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 25 22:19:39 2026...

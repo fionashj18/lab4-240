@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1774495004.758672345, "rt":4.19, "ut":0.48, "st":0.87}}
+{"vcselab":{"timestamp_begin":1774495009.114134605, "rt":7.68, "ut":0.54, "st":0.59}}
+{"link":{"timestamp_begin":1774495016.917113644, "rt":6.89, "ut":0.21, "st":4.97}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1774495004.042213860}
+{"VCS_COMP_START_TIME": 1774495004.042213860}
+{"VCS_COMP_END_TIME": 1774495023.963437375}
+{"VCS_USER_OPTIONS": "-sverilog library.sv grader.sv masterP.sv coinAccepter.sv BigideaFSM.sv"}
+{"vcs1": {"peak_mem": 418538}}
+{"stitch_vcselab": {"peak_mem": 418648}}

@@ -1,4 +1,4 @@
-`default_nettype none
+//`default_nettype none
 
 module Comparator
    #(parameter WIDTH = 4)

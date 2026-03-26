@@ -32,6 +32,66 @@ module ChipInterface (
     // - Use those wires/signals to connect to the MastermindVGA and
     //   EightSevenSegmentDisplays modules below
 
+                               
+  // Big-picture datapath + FSM
+  logic [3:0] Znarly, Zood, RoundNumber, NumGames;
+  logic [11:0] masterPattern;
+  logic gameWon;
+  logic clk_40MHz, clk_200MHz;
+
+  // Track which of the 4 shape positions have been loaded.
+  // BTN[3] acts as LoadShapeNow until all positions are loaded,
+  // then it acts as GradeIt.
+  logic [3:0] positionsLoaded;
+  logic       allLoaded;
+
+  assign allLoaded = &positionsLoaded;
+
+  always_ff @(posedge CLOCK_100) begin
+    if (BTN[0] || BTN[2])           // reset or StartGame clears tracking
+      positionsLoaded <= 4'b0;
+    else if (BTN[3] && !allLoaded)  // LoadShapeNow: mark this position loaded
+      positionsLoaded[SW[4:3]] <= 1'b1;
+  end
+
+  // Prevent the same BTN[3] press that loaded the 4th shape from
+  // immediately triggering GradeIt. Require BTN[3] to be released
+  // at least once after allLoaded before grading is allowed.
+  logic btn3Released;
+  always_ff @(posedge CLOCK_100) begin
+    if (BTN[0] || BTN[2])
+      btn3Released <= 1'b0;
+    else if (!allLoaded)
+      btn3Released <= 1'b0;
+    else if (!BTN[3])               // BTN[3] released while allLoaded
+      btn3Released <= 1'b1;
+  end
+
+  logic gradeIt, loadShapeNow, finish_loading, can_start;
+  assign gradeIt      = BTN[3] & allLoaded & btn3Released;
+  assign loadShapeNow = BTN[3] & ~allLoaded;
+
+  BigPictureDatapath bigDP (
+    .clock(clk_40MHz),
+    .reset(BTN[0]),
+    .Guess(SW[11:0]),
+    .LoadShape(SW[2:0]),
+    .ShapeLocation(SW[4:3]),
+    .CoinValue(SW[15:14]),
+    .CoinInserted(BTN[1]),
+    .StartGame(BTN[2]),
+    .GradeIt(gradeIt),
+    .LoadShapeNow(loadShapeNow),
+    .Znarly,
+    .Zood,
+    .RoundNumber,
+    .finish_loading,
+    .can_start,
+    .NumGames,
+    .gameWon(LD[0]),
+    .masterPattern(masterPattern)
+  );
+
 /*
  *  BEWARE CHANGING CODE BELOW THIS LINE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  *
@@ -56,49 +116,47 @@ module ChipInterface (
                         .VGA_VS,
                         .VGA_HS,
                         .reset(reset_sync),
-                        .numGames( ... ),
-                        .loadNumGames( ... ),
-                        .roundNumber( ... ),
-                        .guess( ... ),
-                        .loadGuess( ... ),
-                        .znarly( ... ), 
-                        .zood( ... ), 
-                        .clearGame( ... ),
-                        .masterPattern( ... ),
-                        .displayMasterPattern( ... ),
-			.loadZnarlyZood( ... )
+                        .numGames(NumGames),
+                        .loadNumGames(1'b1),
+                        .roundNumber(RoundNumber),
+                        .guess(SW[11:0]),
+                        .loadGuess(gradeIt),
+                        .znarly(Znarly),
+                        .zood(Zood),
+                        .clearGame(BTN[0]),
+                        .masterPattern(masterPattern),
+                        .displayMasterPattern(SW[13]),
+                        .loadZnarlyZood(gradeIt)
                        );
 
 
-    EightSevenSegmentDisplays displays(.HEX7( ... ), 
-                                       .HEX6( ... ), 
-                                       .HEX5( ... ), 
-                                       .HEX4( ... ),
-                                       .HEX3( ... ), 
-                                       .HEX2( ... ), 
-                                       .HEX1( ... ), 
-                                       .HEX0( ... ),
-                                       .CLOCK_100,
-                                       .reset( ... ),
-                                       .dec_points( ... ),
-                                       .blank( ... ),  
-                                       .D2_AN,
-                                       .D1_AN,
-                                       .D2_SEG,
-                                       .D1_SEG
-                                      );
+    EightSevenSegmentDisplays display (
+    .HEX7(4'd0), .HEX6(4'd0), .HEX5(4'd0), .HEX4(4'd0),
+    .HEX3(Znarly),
+    .HEX2(Zood),
+    .HEX1(RoundNumber),
+    .HEX0(NumGames),
+    .CLOCK_100,
+    .reset(reset_sync),
+    .dec_points(8'b0),
+    .blank(8'b0),
+    .D2_AN, .D1_AN,
+    .D2_SEG, .D1_SEG
+  );
 
-    Synchronizer sync_reset(.async( ... ), 
-                            .clock(clk_40MHz), 
-                            .sync(reset_sync)
-                           );
+     Synchronizer sync_reset(.async(BTN[0]), 
+                             .clock(clk_40MHz), 
+                             .sync(reset_sync)
+                            );
+     assign LD[15:1] = 15'b0;                   
+                        
 
 /*
  *  DO NOT EDIT CODE BELOW THIS LINE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  *  If you do, the Zorgmeister will Zzzzzt you!
  */
 
-    logic clk_40MHz, clk_200MHz;
+
     logic locked;
     
     // 2 clk freq outputs

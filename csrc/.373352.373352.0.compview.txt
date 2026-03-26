@@ -1,0 +1,6 @@
+Command exited with non-zero status 255
+{"vcs1":{"timestamp_begin":1774483994.199304471, "rt":2.47, "ut":0.19, "st":0.22}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1774483993.462224128}
+{"VCS_COMP_START_TIME": 1774483993.462224128}
+{"VCS_COMP_END_TIME": 1774483996.837473049}
+{"VCS_USER_OPTIONS": "-sverilog library.sv grader.sv masterP.sv coinAccepter.sv BigideaFSM.sv"}
